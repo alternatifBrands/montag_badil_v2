@@ -143,28 +143,35 @@
                         @endforeach
                     </ul>
                 </div><!-- /.new-products__top -->
-                <a class="button-3" role="button" href="{{route('brand.insert')}}" target="_blank">Insert Brand</a>
+                @auth
+                    <div style="margin-bottom:35px">
+                        <a class="button-3" role="button" href="{{route('brand.insert')}}" target="_blank">Insert Brand</a>
+                        <a class="button-3" role="button" href="{{route('Alternaivebrand.insert')}}" target="_blank">Insert Alternative Brand</a>
+                        <a class="button-3" role="button" href="{{route('map.insert')}}" target="_blank">Map Brand With Alternatives</a>
+                    </div>
+                @endauth
                 <div class="row filter-layout">
                     @foreach ($categories as $category)
                         @foreach ($category->brands as $brand)
-                            <div class="col-lg-4 col-md-6 filter-item {{ $category->name }}">
-                                <div class="product-card__two">
-                                    <div class="product-card__two-image">
-                                        <img id="edit_image" src="{{ Storage::disk('public')->url($brand->image) }}"
-                                            alt="{{ $brand->name }}">
-                                        <div class="product-card__two-image-content">
-                                            <a href="{{ route('brand.details', $brand->id) }}" target="_blank"><i
-                                                    class="organik-icon-visibility"></i></a>
-                                        </div><!-- /.product-card__two-image-content -->
-                                    </div><!-- /.product-card__two-image -->
-                                    <div class="product-card__two-content">
-                                        <h3><a href="{{ route('brand.details', $brand->id) }}"
-                                                target="_blank">{{ $brand->name }}</a>
-                                        </h3>
-                                        {{-- <p>{{ $brand->description }}</p> --}}
-                                    </div><!-- /.product-card__two-content -->
-                                </div><!-- /.product-card__two -->
-                            </div><!-- /.col-lg-4 -->
+                                <div class="col-lg-4 col-md-6 filter-item {{ $category->name }}">
+                                    <div class="product-card__two">
+                                        <div class="product-card__two-image">
+                                            <img id="edit_image" src="{{ Storage::disk('public')->url($brand->image) }}"
+                                                alt="{{ $brand->name }}">
+                                            <div class="product-card__two-image-content">
+                                                <a href="{{ route('brand.details', $brand->id) }}" target="_blank"><i
+                                                        class="organik-icon-visibility"></i></a>
+                                            </div><!-- /.product-card__two-image-content -->
+                                        </div><!-- /.product-card__two-image -->
+                                        <div class="product-card__two-content">
+                                            <h3><a href="{{ route('brand.details', $brand->id) }}"
+                                                    target="_blank">{{ $brand->name }}</a>
+                                            </h3>
+                                            {{-- <p>{{ $brand->description }}</p> --}}
+                                        </div><!-- /.product-card__two-content -->
+                                    </div><!-- /.product-card__two -->
+                                </div><!-- /.col-lg-4 -->
+                            
                         @endforeach
                     @endforeach
                 </div><!-- /.row -->

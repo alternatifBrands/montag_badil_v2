@@ -1,10 +1,10 @@
 @extends('web.pages.montag_layout')
-@section('title', 'Insert Brand Page')
+@section('title', 'Insert Alternative Brand Page')
 @section('content')
     @include('web.Pages.header')
     <div class="container">
-        <h2 class="mt-5">Insert Brand</h2>
-        <form method="POST" action="{{ route('brand.store') }}" enctype="multipart/form-data">
+        <h2 class="mt-5">Insert Alternative Brand</h2>
+        <form method="POST" action="{{ route('Alternaivebrand.store') }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="name">Name:</label>
