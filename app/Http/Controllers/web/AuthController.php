@@ -47,7 +47,7 @@ class AuthController extends Controller
         if ($user_role) {
             $user->assignRole($user_role);
         }
-        return redirect()->intended('/');
+        return redirect()->route('home');
     }
     // forget
     public function forgetPasswordView()

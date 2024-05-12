@@ -2,8 +2,8 @@
     <img src="{{ asset('assets/images/shapes/footer-bg-1-1.png') }}" alt="" class="site-footer__shape-1">
     <img src="{{ asset('assets/images/shapes/footer-bg-1-2.png') }}" alt="" class="site-footer__shape-2">
     <div class="container">
-        <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+        <div class="row" style="justify-content: center">
+            <div class="col-md-3">
                 <div class="footer-widget footer-widget__about-widget">
                     <a href="{{ route('home') }}" class="footer-widget__logo">
                         <img src="{{ asset('logo.png') }}" alt="" width="100" height="100">
@@ -14,7 +14,7 @@
                         sem neque.</p>
                 </div><!-- /.footer-widget -->
             </div><!-- /.col-sm-12 col-md-6 -->
-            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-2">
+            <div class="col-md-3">
                 <div class="footer-widget footer-widget__contact-widget">
                     <h3 class="footer-widget__title">Contact</h3><!-- /.footer-widget__title -->
                     <ul class="list-unstyled footer-widget__contact">
@@ -34,15 +34,15 @@
                     </ul><!-- /.list-unstyled footer-widget__contact -->
                 </div><!-- /.footer-widget -->
             </div><!-- /.col-sm-12 col-md-6 col-lg-2 -->
-            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-2">
+            <div class="col-md-3">
                 <div class="footer-widget footer-widget__links-widget">
                     <h3 class="footer-widget__title">Links</h3><!-- /.footer-widget__title -->
                     <ul class="list-unstyled footer-widget__links">
                         <li>
-                            <a href="about.html">About</a>
+                            <a href="{{ route('about') }}">About</a>
                         </li>
                         <li>
-                            <a href="contact.html">Contact</a>
+                            <a href="{{ route('contact') }}">Contact</a>
                         </li>
                     </ul><!-- /.list-unstyled footer-widget__contact -->
                 </div><!-- /.footer-widget -->

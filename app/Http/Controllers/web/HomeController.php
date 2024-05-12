@@ -9,16 +9,23 @@ use App\Models\BrandAlternative;
 use App\Mail\web\ContactFormMail;
 use App\Http\Controllers\Controller;
 use App\Models\Country;
+use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        $categories = Category::with(['brands'=>function($q){
+        $categories = Category::
+        with(['brands'=>function($q){
             $q->where('status','approved');
-        }])->get();
-        return view('web.pages.home', compact('categories'));
+        }])
+        ->get();
+        $users = User::count();
+        $categories_count = Category::count();
+        $brands = Brand::count();
+        $brand_alternatives = BrandAlternative::count();
+        return view('web.pages.home', compact('categories','categories_count','users','brands','brand_alternatives'));
     }
     public function show($id)
     {
