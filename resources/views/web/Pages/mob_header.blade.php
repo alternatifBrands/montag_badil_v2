@@ -15,7 +15,7 @@
         <ul class="mobile-nav__contact list-unstyled">
             <li>
                 <i class="organik-icon-email"></i>
-                <a href="mailto:sahla@test.com">sahla@test.com</a>
+                <a href="mailto:alternatifurunler@b1rincitech.com">alternatifurunler@b1rincitech.com</a>
             </li>
             <li>
                 <i class="organik-icon-calling"></i>

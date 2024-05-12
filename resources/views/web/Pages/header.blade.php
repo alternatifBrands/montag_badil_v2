@@ -21,7 +21,7 @@
                 </div><!-- /.topbar__social -->
                 <div class="topbar__info">
                     <i class="organik-icon-email"></i>
-                    <p>Email <a href="mailto:sahla@test.com">sahla@test.com</a></p>
+                    <p>Email <a href="mailto:alternatifurunler@b1rincitech.com">alternatifurunler@b1rincitech.com</a></p>
                 </div><!-- /.topbar__info -->
             </div><!-- /.topbar__left -->
             <div class="topbar__right">

@@ -24,7 +24,7 @@
                         </li>
                         <li>
                             <i class="fa fa-envelope"></i>
-                            <a href="mailto:sahla@test.com">sahla@test.com</a>
+                            <a href="mailto:alternatifurunler@b1rincitech.com">alternatifurunler@b1rincitech.com</a>
                         </li>
                         <li>
                             <i class="fa fa-map-marker-alt"></i>
@@ -58,7 +58,7 @@
                     <a target="_blank" href="https://www.facebook.com/" class="fab fa-facebook-square"></a>
                     <a target="_blank" href="https://www.instagram.com/" class="fab fa-instagram"></a>
                 </div><!-- /.bottom-footer__social -->
-                <p class="thm-text-dark">© Copyright <span class="dynamic-year"></span> by sahla@test.com</p>
+                <p class="thm-text-dark">© Copyright <span class="dynamic-year"></span> by alternatifurunler@b1rincitech.com</p>
             </div><!-- /.inner-container -->
         </div><!-- /.container -->
     </div><!-- /.bottom-footer -->
