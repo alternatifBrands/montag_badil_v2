@@ -17,8 +17,6 @@
             </div><!-- /.container -->
         </section><!-- /.page-header -->
         <section class="contact-one">
-            <img src="assets/images/shapes/contact-bg-1-1.png" alt="" class="contact-one__shape-1">
-            <img src="assets/images/shapes/contact-bg-1-2.png" alt="" class="contact-one__shape-2">
             <div class="container">
                 <div class="block-title text-center">
                     <div class="block-title__decor"></div><!-- /.block-title__decor -->

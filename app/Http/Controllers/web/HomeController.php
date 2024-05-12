@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\web;
 
+use App\Models\User;
 use App\Models\Brand;
+use App\Models\Country;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\BrandAlternative;
 use App\Mail\web\ContactFormMail;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\Country;
-use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
@@ -119,5 +120,18 @@ class HomeController extends Controller
         ->where('status','pending')
         ->get();
         return view('web.pages.mapBrand',compact('brands','brand_alternatives'));
+    }
+    public function attach_brand_with_alt(Request $request) {
+        $request->validate([
+            'brand_id' => 'required|exists:brands,id',
+            'alternative_id' => 'required|exists:brand_alternatives,id'
+        ]);
+        DB::table('brands_alternatives')->insert([
+            'brand_id' => $request->brand_id,
+            'alternative_id'=>$request->alternative_id,
+            'created_at'=>now(),
+            'updated_at'=>now(),
+        ]);
+        return redirect()->route('home');
     }
 }
