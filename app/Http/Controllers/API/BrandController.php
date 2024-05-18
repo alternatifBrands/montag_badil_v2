@@ -17,7 +17,7 @@ class BrandController extends Controller
     {
         if (Brand::exists()) {
             // $brands = Brand::with(['user', 'category', 'country','city'])->paginate();
-            $brands = Brand::where('status','approved')->with(['user', 'category', 'country', 'city', 'brandAlternatives'])->get();
+            $brands = Brand::where('status','approved')->with(['user', 'category', 'country', 'city', 'brandAlternatives.country','brandAlternatives.category'])->get();
             // return $this->paginateResponse(BrandResource::collection($brands));
             return BrandResource::collection($brands);
         }
