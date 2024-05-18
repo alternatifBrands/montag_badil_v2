@@ -17,7 +17,8 @@ class BrandAlternativeController extends Controller
     {
         if (BrandAlternative::exists()) {
             $brands = BrandAlternative::with(['user', 'category', 'country','city'])->paginate();
-            return $this->paginateResponse(BrandAlternativeResource::collection($brands));
+            // return $this->paginateResponse(BrandAlternativeResource::collection($brands));
+            return BrandAlternativeResource::collection($brands);
         }
         return $this->NotFoundResponse();
     }
