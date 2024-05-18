@@ -16,7 +16,7 @@ class BrandAlternativeController extends Controller
     public function index()
     {
         if (BrandAlternative::exists()) {
-            $brands = BrandAlternative::with(['user', 'category', 'country','city'])->get();
+            $brands = BrandAlternative::where('status','approved')->with(['user', 'category', 'country','city'])->get();
             // return $this->paginateResponse(BrandAlternativeResource::collection($brands));
             return BrandAlternativeResource::collection($brands);
         }
@@ -24,7 +24,7 @@ class BrandAlternativeController extends Controller
     }
     public function show($id)
     {
-        $brand = BrandAlternative::with(['user', 'category', 'country','city'])->find($id);
+        $brand = BrandAlternative::where('status','approved')->with(['user', 'category', 'country','city'])->find($id);
         if ($brand) {
             return $this->GetDataResponse(BrandAlternativeResource::make($brand));
         }
