@@ -5,6 +5,7 @@ namespace App\Filament\Resources\BrandResource\Pages;
 use Filament\Actions;
 use Filament\Resources\Components\Tab;
 use App\Filament\Resources\BrandResource;
+use App\Imports\BrandImport;
 use Filament\Resources\Pages\ListRecords;
 use Illuminate\Database\Eloquent\Builder;
 use EightyNine\ExcelImport\ExcelImportAction;
@@ -28,6 +29,7 @@ class ListBrands extends ListRecords
     {
         return [
             ExcelImportAction::make()
+            ->use(BrandImport::class)
                 ->color("primary"),
             Actions\CreateAction::make(),
         ];
