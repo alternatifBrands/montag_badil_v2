@@ -2,12 +2,13 @@
 
 namespace App\Filament\Resources\BrandAlternativeResource\Pages;
 
-use App\Filament\Resources\BrandAlternativeResource;
 use Filament\Actions;
-use Filament\Resources\Pages\ListRecords;
 use Filament\Resources\Components\Tab;
+use App\Imports\BrandAlternativeImport;
+use Filament\Resources\Pages\ListRecords;
 use Illuminate\Database\Eloquent\Builder;
 use EightyNine\ExcelImport\ExcelImportAction;
+use App\Filament\Resources\BrandAlternativeResource;
 
 class ListBrandAlternatives extends ListRecords
 {
@@ -28,6 +29,7 @@ class ListBrandAlternatives extends ListRecords
     {
         return [
             ExcelImportAction::make()
+            // ->use(BrandAlternativeImport::class)
                 ->color("primary"),
             Actions\CreateAction::make(),
         ];
