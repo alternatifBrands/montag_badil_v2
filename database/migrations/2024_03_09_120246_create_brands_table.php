@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('industry')->nullable();
             $table->string('notes')->nullable();
             $table->string('image')->nullable();
-            $table->boolean('is_alternative')->default(true);
+            $table->boolean('is_alternative')->default(false);
             $table->string('barcode')->nullable();
             $table->enum('status',['pending','approved','rejected'])->default('pending');
             $table->foreignId('user_id')->nullable()->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
