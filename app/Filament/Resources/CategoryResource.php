@@ -57,6 +57,7 @@ class CategoryResource extends Resource
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: false),
                 TextColumn::make('name')
+                    ->url(fn(Category $record): string =>  self::getUrl('brandList', ['record' => $record]))
                     ->searchable()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: false),
@@ -105,6 +106,8 @@ class CategoryResource extends Resource
             'index' => Pages\ListCategories::route('/'),
             'create' => Pages\CreateCategory::route('/create'),
             'edit' => Pages\EditCategory::route('/{record}/edit'),
+            'brandList' => Pages\DisplayBrands::route('/{record}/displayBrandList'),
+            // 'brandList' => Pages\DisplayBrands::route('/displayBrandList/{record}'),
         ];
     }
 }
