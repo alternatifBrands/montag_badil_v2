@@ -88,7 +88,7 @@ class BrandAlternativeResource extends Resource
                         Select::make('status')
                             ->required()
                             ->options(StatusType::class),
-                            
+
                         // SpatieMediaLibraryFileUpload::make('brand_logo')
                         //     ->collection('brand_alternative')
                         //     ->image()
@@ -108,7 +108,7 @@ class BrandAlternativeResource extends Resource
                             ->live(),
 
                         Select::make('city_id')
-                            ->options(fn (Get $get): Collection => City::query()
+                            ->options(fn(Get $get): Collection => City::query()
                                 ->where('country_id', $get('country_id'))
                                 ->pluck('name', 'id'))
                             ->label('City')
@@ -119,6 +119,11 @@ class BrandAlternativeResource extends Resource
                         Select::make('category_id')
                             ->relationship('category', 'name')
                             ->required(),
+
+                        Select::make('brands')
+                            ->relationship('brands', 'name')
+                            ->multiple()
+                            ->preload(),
                     ])->columns(2)
 
             ]);
@@ -193,7 +198,7 @@ class BrandAlternativeResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: false),
 
                 TextColumn::make('status'),
-                
+
                 // SpatieMediaLibraryImageColumn::make('brand_logo')
                 //     ->collection('brand_alternative')
                 //     ->width(150)
