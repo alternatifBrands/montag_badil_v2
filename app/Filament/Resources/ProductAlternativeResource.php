@@ -84,16 +84,16 @@ class ProductAlternativeResource extends Resource
         return $table
             ->columns([
 
-                TextColumn::make('No')->state(
-                    static function (HasTable $livewire, stdClass $rowLoop): string {
-                        return (string) (
-                            $rowLoop->iteration +
-                            ($livewire->getTableRecordsPerPage() * (
-                                $livewire->getTablePage() - 1
-                            ))
-                        );
-                    }
-                ),
+                // TextColumn::make('No')->state(
+                //     static function (HasTable $livewire, stdClass $rowLoop): string {
+                //         return (string) (
+                //             $rowLoop->iteration +
+                //             ($livewire->getTableRecordsPerPage() * (
+                //                 $livewire->getTablePage() - 1
+                //             ))
+                //         );
+                //     }
+                // ),
 
                 TextColumn::make('name')
                     ->searchable()
