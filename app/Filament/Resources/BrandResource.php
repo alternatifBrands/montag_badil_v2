@@ -87,9 +87,9 @@ class BrandResource extends Resource
                             // ->required()
                             ->string(),
 
-                        Toggle::make('is_alternative')
-                            ->required()
-                            ->live(),
+                        // Toggle::make('is_alternative')
+                        //     ->required()
+                        //     ->live(),
 
                         TextInput::make('barcode')
                             // ->required()
@@ -130,12 +130,19 @@ class BrandResource extends Resource
                         Select::make('category_id')
                             ->relationship('category', 'name'),
                         // ->required(),
-                        Group::make([
-                            Select::make('brandAlternatives')
+
+
+                        // Group::make([
+                        //     Select::make('brandAlternatives')
+                        //         ->relationship('brandAlternatives', 'name')
+                        //         ->multiple()
+                        //         ->preload(),
+                        // ])->hidden(fn(Get $get): bool => $get('is_alternative')),
+
+                        Select::make('brandAlternatives')
                                 ->relationship('brandAlternatives', 'name')
                                 ->multiple()
                                 ->preload(),
-                        ])->hidden(fn(Get $get): bool => $get('is_alternative')),
 
                     ])->columns(2)
 
