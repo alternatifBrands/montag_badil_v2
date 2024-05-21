@@ -260,7 +260,9 @@ class CountrySeeder extends Seeder
             [247, 'Zimbabwe'],
             [248, 'Kosovo'],
             [249, 'Curaçao'],
-            [250, 'Sint Maarten [Dutch part]']
+            [250, 'Sint Maarten [Dutch part]'],
+            [251, 'Holland'],
+            [252, 'Scotland'],
         ];
         $chunkSize = 100; // Number of records to insert per chunk
 
