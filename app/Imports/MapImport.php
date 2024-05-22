@@ -10,11 +10,12 @@ class MapImport implements ToModel, WithHeadingRow
 {
     public function model(array $row)
     {
-        if (!BrandMapAlternative::
-                    where('brand_id', $row['brand_id'])
-                    ->Where('alternative_id', $row['alternative_id'])
-                    ->first()) {
-            return new BrandMapAlternative($row);
-        }
+        return BrandMapAlternative::firstOrCreate(
+            [
+                'brand_id' => $row['brand_id'],
+                'alternative_id' => $row['alternative_id']
+            ],
+            $row
+        );
     }
 }

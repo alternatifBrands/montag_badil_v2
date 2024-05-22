@@ -17,7 +17,7 @@ class ListCategories extends ListRecords
         return [
             // ExcelImportAction::make()->color("primary")->hidden(!auth()->user()->hasRole('admin_role_web')),
             ExcelImportAction::make()
-            ->use(CategoryImport::class)
+            // ->use(CategoryImport::class)
             ->color("primary"),
             Actions\CreateAction::make(),
         ];
