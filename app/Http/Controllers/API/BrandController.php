@@ -16,16 +16,26 @@ class BrandController extends Controller
     public function index()
     {
         if (Brand::exists()) {
-            // $brands = Brand::with(['user', 'category', 'country','city'])->paginate();
-            $brands = Brand::where('status','approved')->with(['user', 'category', 'country', 'city', 'brandAlternatives.country','brandAlternatives.category'])->get();
-            // return $this->paginateResponse(BrandResource::collection($brands));
+            $brands = Brand::where('status', 'approved')
+                ->with([
+                    'user',
+                    'category',
+                    'country',
+                    'city',
+                    'brandAlternatives' => function ($query) {
+                        $query->with(['country', 'category']);
+                    }
+                ])->get();
+
             return BrandResource::collection($brands);
         }
+
         return $this->NotFoundResponse();
     }
+
     public function show($id)
     {
-        $brand = Brand::where('status','approved')->with(['user', 'category', 'country', 'city', 'brandAlternatives'])->find($id);
+        $brand = Brand::where('status', 'approved')->with(['user', 'category', 'country', 'city', 'brandAlternatives'])->find($id);
         if ($brand) {
             return $this->GetDataResponse(BrandResource::make($brand));
         }
