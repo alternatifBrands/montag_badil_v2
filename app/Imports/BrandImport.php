@@ -10,10 +10,10 @@ class BrandImport implements ToModel, WithHeadingRow
 {
     public function model(array $row)
     {
-        // if($row['done'] == 1) {
+        if($row['done'] == 1) {
             if (!Brand::where('name', $row['name'])->first()) {
                 return new Brand($row);
             }
-        // } 
+        }
     }
 }
