@@ -151,51 +151,51 @@ class BrandAlternativeResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: false),
 
 
-                TextColumn::make('founder')
-                    ->searchable()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: false),
+                // TextColumn::make('founder')
+                //     ->searchable()
+                //     ->sortable()
+                //     ->toggleable(isToggledHiddenByDefault: false),
 
-                TextColumn::make('owner')
-                    ->searchable()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: false),
+                // TextColumn::make('owner')
+                //     ->searchable()
+                //     ->sortable()
+                //     ->toggleable(isToggledHiddenByDefault: false),
 
-                TextColumn::make('year')
-                    ->searchable()
-                    ->date('d-m-Y')
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: false),
+                // TextColumn::make('year')
+                //     ->searchable()
+                //     ->date('d-m-Y')
+                //     ->sortable()
+                //     ->toggleable(isToggledHiddenByDefault: false),
 
                 TextColumn::make('url')
                     ->searchable()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: false),
 
-                TextColumn::make('description')
-                    ->searchable()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: false),
+                // TextColumn::make('description')
+                //     ->searchable()
+                //     ->sortable()
+                //     ->toggleable(isToggledHiddenByDefault: false),
 
-                TextColumn::make('parent_company')
-                    ->searchable()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: false),
+                // TextColumn::make('parent_company')
+                //     ->searchable()
+                //     ->sortable()
+                //     ->toggleable(isToggledHiddenByDefault: false),
 
-                TextColumn::make('industry')
-                    ->searchable()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: false),
+                // TextColumn::make('industry')
+                //     ->searchable()
+                //     ->sortable()
+                //     ->toggleable(isToggledHiddenByDefault: false),
 
-                TextColumn::make('notes')
-                    ->searchable()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: false),
+                // TextColumn::make('notes')
+                //     ->searchable()
+                //     ->sortable()
+                //     ->toggleable(isToggledHiddenByDefault: false),
 
-                TextColumn::make('barcode')
-                    ->searchable()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: false),
+                // TextColumn::make('barcode')
+                //     ->searchable()
+                //     ->sortable()
+                //     ->toggleable(isToggledHiddenByDefault: false),
 
                 TextColumn::make('status'),
 
@@ -215,12 +215,19 @@ class BrandAlternativeResource extends Resource
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: false),
 
-                TextColumn::make('city.name')
+                // TextColumn::make('city.name')
+                //     ->searchable()
+                //     ->sortable()
+                //     ->toggleable(isToggledHiddenByDefault: false),
+
+                TextColumn::make('category.name')
                     ->searchable()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: false),
 
-                TextColumn::make('category.name')
+                TextColumn::make('brands.name')
+                    ->listWithLineBreaks()
+                    ->bulleted()
                     ->searchable()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: false),
