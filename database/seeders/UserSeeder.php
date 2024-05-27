@@ -83,18 +83,18 @@ class UserSeeder extends Seeder
         // give permissions to role
         $user_role_web->givePermissionTo($userWebPermissions);
         #################################################
-        $countryIds = Country::pluck('id')->toArray();
-        for ($i = 0; $i < 7; $i++) {
-            User::create([
-                'name' => fake()->name(),
-                'email' => fake()->unique()->safeEmail(),
-                'email_verified_at' => Carbon::now(),
-                'password' => Hash::make('password'),
-                'remember_token' => Str::random(10),
-                'country_id' => fake()->randomElement($countryIds),
-                'type' => fake()->randomElement(['individual', 'organization']),
-            ])->assignRole('user_role_web');
-        }
+        // $countryIds = Country::pluck('id')->toArray();
+        // for ($i = 0; $i < 7; $i++) {
+        //     User::create([
+        //         'name' => fake()->name(),
+        //         'email' => fake()->unique()->safeEmail(),
+        //         'email_verified_at' => Carbon::now(),
+        //         'password' => Hash::make('password'),
+        //         'remember_token' => Str::random(10),
+        //         'country_id' => fake()->randomElement($countryIds),
+        //         'type' => fake()->randomElement(['individual', 'organization']),
+        //     ])->assignRole('user_role_web');
+        // }
         #################################################
     }
 }
