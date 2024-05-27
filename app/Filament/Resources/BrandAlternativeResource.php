@@ -103,7 +103,6 @@ class BrandAlternativeResource extends Resource
 
                         Select::make('country_id')
                             ->relationship('country', 'name')
-                            ->required()
                             ->preload()
                             ->live(),
 
