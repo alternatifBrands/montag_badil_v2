@@ -29,7 +29,7 @@ class ListBrands extends ListRecords
     {
         return [
             ExcelImportAction::make()
-            // ->use(BrandImport::class)
+            ->use(BrandImport::class)
                 ->color("primary"),
             Actions\CreateAction::make(),
         ];
