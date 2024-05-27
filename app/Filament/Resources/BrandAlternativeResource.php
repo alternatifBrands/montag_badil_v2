@@ -48,42 +48,42 @@ class BrandAlternativeResource extends Resource
                             ->required()
                             ->string(),
 
-                        TextInput::make('founder')
-                            ->required()
-                            ->string(),
+                        // TextInput::make('founder')
+                        //     ->required()
+                        //     ->string(),
 
-                        TextInput::make('owner')
-                            ->required()
-                            ->string(),
+                        // TextInput::make('owner')
+                        //     ->required()
+                        //     ->string(),
 
-                        DatePicker::make('year')
-                            ->required()
-                            ->format('d-m-Y')
-                            ->date(),
+                        // DatePicker::make('year')
+                        //     ->required()
+                        //     ->format('d-m-Y')
+                        //     ->date(),
 
                         TextInput::make('url')
                             ->required()
                             ->url(),
 
-                        Textarea::make('description')
-                            ->required()
-                            ->string(),
+                        // Textarea::make('description')
+                        //     ->required()
+                        //     ->string(),
 
-                        TextInput::make('parent_company')
-                            ->required()
-                            ->string(),
+                        // TextInput::make('parent_company')
+                        //     ->required()
+                        //     ->string(),
 
-                        TextInput::make('industry')
-                            ->required()
-                            ->string(),
+                        // TextInput::make('industry')
+                        //     ->required()
+                        //     ->string(),
 
-                        TextInput::make('notes')
-                            ->required()
-                            ->string(),
+                        // TextInput::make('notes')
+                        //     ->required()
+                        //     ->string(),
 
-                        TextInput::make('barcode')
-                            ->required()
-                            ->string(),
+                        // TextInput::make('barcode')
+                        //     ->required()
+                        //     ->string(),
 
                         Select::make('status')
                             ->required()
@@ -107,14 +107,14 @@ class BrandAlternativeResource extends Resource
                             ->preload()
                             ->live(),
 
-                        Select::make('city_id')
-                            ->options(fn(Get $get): Collection => City::query()
-                                ->where('country_id', $get('country_id'))
-                                ->pluck('name', 'id'))
-                            ->label('City')
-                            ->required()
-                            ->preload()
-                            ->live(),
+                        // Select::make('city_id')
+                        //     ->options(fn(Get $get): Collection => City::query()
+                        //         ->where('country_id', $get('country_id'))
+                        //         ->pluck('name', 'id'))
+                        //     ->label('City')
+                        //     ->required()
+                        //     ->preload()
+                        //     ->live(),
 
                         Select::make('category_id')
                             ->relationship('category', 'name')
