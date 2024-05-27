@@ -16,7 +16,7 @@ class ListBrandMapAlternatives extends ListRecords
     {
         return [
             ExcelImportAction::make()
-                ->use(MapImport::class)
+                // ->use(MapImport::class)
                 ->color("primary"),
             Actions\CreateAction::make(),
         ];
