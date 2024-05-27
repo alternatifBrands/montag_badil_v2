@@ -21,8 +21,8 @@ class ListBrandAlternatives extends ListRecords
                 ->modifyQueryUsing(fn (Builder $query) => $query->where('status', 'pending')),
             'approved' => Tab::make()
                 ->modifyQueryUsing(fn (Builder $query) => $query->where('status', 'approved')),
-            'rejected' => Tab::make()
-                ->modifyQueryUsing(fn (Builder $query) => $query->where('status', 'rejected')),
+            // 'rejected' => Tab::make()
+            //     ->modifyQueryUsing(fn (Builder $query) => $query->where('status', 'rejected')),
         ];
     }
     protected function getHeaderActions(): array
