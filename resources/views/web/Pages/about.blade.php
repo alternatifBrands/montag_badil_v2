@@ -1,4 +1,4 @@
-@extends('web.pages.montag_layout')
+@extends('web.pages.montag_layout') 
 @section('title', 'About Page')
 @section('content')
     <div class="page-wrapper">
