@@ -44,7 +44,8 @@ trait AHM_Response
             'message' => 'Invalid email or password',
             'data' => [],
             'status' => false,
-        ]);
+            'code'=>400
+        ],400);
     }
     public function PasswordNotValidResponse()
     {
