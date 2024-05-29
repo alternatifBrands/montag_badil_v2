@@ -1,7 +1,7 @@
 @extends('web.pages.montag_layout')
 @section('title', 'Map Brand Alternative Page')
 @section('content')
-    @include('web.Pages.header')
+    @include('web.pages.header')
     <div class="container">
         <h2 class="mt-5">Map Brand With Alternative Brand</h2>
         <form method="POST" action="{{ route('map.store') }}" enctype="multipart/form-data">
@@ -25,6 +25,6 @@
             <button type="submit" class="button-3">Submit</button>
         </form>
     </div>
-    @include('web.Pages.footer')
-    @include('web.Pages.mob_header')
+    @include('web.pages.footer')
+    @include('web.pages.mob_header')
 @endsection

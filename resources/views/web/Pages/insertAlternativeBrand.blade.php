@@ -1,7 +1,7 @@
 @extends('web.pages.montag_layout')
 @section('title', 'Insert Alternative Brand Page')
 @section('content')
-    @include('web.Pages.header')
+    @include('web.pages.header')
     <div class="container">
         <h2 class="mt-5">Insert Alternative Brand</h2>
         <form method="POST" action="{{ route('Alternaivebrand.store') }}" enctype="multipart/form-data">
@@ -49,7 +49,7 @@
             <button type="submit" class="button-3">Submit</button>
         </form>
     </div>
-    @include('web.Pages.footer')
-    @include('web.Pages.mob_header')
+    @include('web.pages.footer')
+    @include('web.pages.mob_header')
 
 @endsection
