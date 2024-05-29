@@ -14,10 +14,10 @@
                 <label for="description">Description:</label>
                 <textarea class="form-control" id="description" name="description" required></textarea>
             </div>
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label for="url">url:</label>
                 <input type="url" class="form-control" id="url" name="url" required>
-            </div>
+            </div> --}}
             <div class="form-group">
                 <label for="category_id">Category:</label>
                 <select class="form-control" id="category_id" name="category_id" required>

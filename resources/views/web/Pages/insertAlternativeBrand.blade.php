@@ -14,10 +14,10 @@
                 <label for="description">Description:</label>
                 <textarea class="form-control" id="description" name="description" required></textarea>
             </div>
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label for="url">url:</label>
                 <input type="url" class="form-control" id="url" name="url" required>
-            </div>
+            </div> --}}
             <div class="form-group">
                 <label for="category_id">Category:</label>
                 <select class="form-control" id="category_id" name="category_id" required>
@@ -35,6 +35,14 @@
                 </select>
             </div>
             <div class="form-group">
+                <label for="brand_id">Brand:</label>
+                <select class="form-control" id="brand_id" name="brand_id[]" multiple="multiple" required>
+                    @foreach($brands as $brand)
+                        <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group">
                 <label for="image">Image:</label>
                 <input type="file" class="form-control-file" id="image" name="image" accept="image/*" required>
             </div>
@@ -43,4 +51,5 @@
     </div>
     @include('web.Pages.footer')
     @include('web.Pages.mob_header')
+
 @endsection

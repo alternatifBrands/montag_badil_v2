@@ -29,7 +29,6 @@ class BrandController extends Controller
 
             return BrandResource::collection($brands);
         }
-
         return $this->NotFoundResponse();
     }
 

@@ -1,5 +1,5 @@
 @extends('web.pages.montag_layout')
-@section('title', 'Insert Brand Page')
+@section('title', 'Map Brand Alternative Page')
 @section('content')
     @include('web.Pages.header')
     <div class="container">
