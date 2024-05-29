@@ -19,7 +19,7 @@ class registerRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'min:3', 'max:50'],
             'email'=>['required','email','string',Rule::unique('users')->ignore($userId)],
-            'password' => ['required', Rules\Password::defaults()],
+            'password' => ['required', 'min:6'],
         ];
     }
 }

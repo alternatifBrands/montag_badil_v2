@@ -18,7 +18,7 @@ class createRequest extends FormRequest
             'year' => ['required', 'date'],
             'description' => ['required', 'string'],
             'notes' => ['required', 'string'],
-            'barcode' => ['required', 'string'],
+            'barcode' => ['sometimes', 'string'],
             'image' => ['required', 'image', 'mimes:png,jpg,jpeg,webp,svg', 'max:90000'],
             'founder' => ['sometimes', 'string'],
             'owner' => ['sometimes', 'string'],
