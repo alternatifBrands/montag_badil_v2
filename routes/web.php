@@ -37,6 +37,4 @@ Route::middleware('auth')->group(function () {
     Route::get('/insertAlternativeBrand',[HomeController::class, 'insertAlternativeBrandView'])->name('Alternaivebrand.insert');
     Route::post('/store_alternative_brand',[HomeController::class, 'store_alternative_brand'])->name('Alternaivebrand.store');
 
-    // Route::get('/attachBrandWithAlt',[HomeController::class, 'attachBrandWithAltView'])->name('map.insert');
-    // Route::post('/attach_brand_with_alt',[HomeController::class, 'attach_brand_with_alt'])->name('map.store');
 });

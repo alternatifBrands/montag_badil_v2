@@ -86,7 +86,6 @@
                     <div style="margin-bottom:35px">
                         <a class="button-3" role="button" href="{{route('brand.insert')}}" target="_blank">Insert Brand</a>
                         <a class="button-3" role="button" href="{{route('Alternaivebrand.insert')}}" target="_blank">Insert Alternative Brand</a>
-                        {{-- <a class="button-3" role="button" href="{{route('map.insert')}}" target="_blank">Map Brand With Alternatives</a> --}}
                     </div>
                 @endauth
                 <div class="row filter-layout">

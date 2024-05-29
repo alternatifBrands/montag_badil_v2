@@ -130,45 +130,5 @@ class HomeController extends Controller
             ]);
         }
         return redirect()->route('home');
-        // $brand = BrandAlternative::create([
-        //     'name'=>$request->name,
-        //     'description'=>$request->description,
-        //     'category_id'=>$request->category_id,
-        //     'country_id'=>$request->country_id,
-        //     'status'=>'pending',
-        //     'user_id'=>auth()->user()->id
-        // ]);
-        // if ($request->hasFile('image')) {
-        //     $file = $request->file('image');
-        //     $filePath = $file->store('brand_alternative_image', 'public');
-        //     $brand->image = $filePath;
-        //     $brand->save();
-        // }
-        // return redirect()->route('home');
     }
-    // public function attachBrandWithAltView()
-    // {
-    //     $brands = Brand::
-    //     where('user_id',auth()->user()->id)
-    //     ->where('status','pending')
-    //     ->get();
-    //     $brand_alternatives = BrandAlternative::
-    //     where('user_id',auth()->user()->id)
-    //     ->where('status','pending')
-    //     ->get();
-    //     return view('web.pages.mapBrand',compact('brands','brand_alternatives'));
-    // }
-    // public function attach_brand_with_alt(Request $request) {
-    //     $request->validate([
-    //         'brand_id' => 'required|exists:brands,id',
-    //         'alternative_id' => 'required|exists:brand_alternatives,id'
-    //     ]);
-    //     DB::table('brands_alternatives')->insert([
-    //         'brand_id' => $request->brand_id,
-    //         'alternative_id'=>$request->alternative_id,
-    //         'created_at'=>now(),
-    //         'updated_at'=>now(),
-    //     ]);
-    //     return redirect()->route('home');
-    // }
 }
