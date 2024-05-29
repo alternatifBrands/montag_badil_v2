@@ -4,32 +4,61 @@ namespace App\Http\Controllers\API;
 
 use App\Models\Brand;
 use App\Trait\AHM_Response;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\API\BrandResource;
 use App\Http\Requests\API\Brand\createRequest;
 use App\Http\Requests\API\Brand\updateRequest;
-use App\Http\Resources\API\BrandResource;
 
 
 class BrandController extends Controller
 {
     use AHM_Response;
-    public function index()
+    public function index(Request $request)
     {
-        if (Brand::exists()) {
-            $brands = Brand::where('status', 'approved')
-                ->with([
-                    'user',
-                    'category',
-                    'country',
-                    'city',
-                    'brandAlternatives' => function ($query) {
-                        $query->with(['country', 'category']);
-                    }
-                ])->get();
+        // if (Brand::exists()) {
+        //     $brands = Brand::where('status', 'approved')
+        //         ->with([
+        //             'user',
+        //             'category',
+        //             'country',
+        //             'city',
+        //             'brandAlternatives' => function ($query) {
+        //                 $query->with(['country', 'category']);
+        //             }
+        //         ])->get();
 
-            return BrandResource::collection($brands);
+        //     return BrandResource::collection($brands);
+        // }
+        // return $this->NotFoundResponse();
+        // Retrieve the 'country' query parameter
+        $countryName = $request->query('country');
+
+        // Build the base query
+        $query = Brand::where('status', 'approved')
+            ->with([
+                'user',
+                'category',
+                'country',
+                'city',
+                'brandAlternatives' => function ($query) {
+                    $query->with(['country', 'category']);
+                }
+            ]);
+
+        // Check if a country filter is provided
+        if ($countryName) {
+            // Join the countries table to filter by country name
+            $query->whereHas('country', function ($query) use ($countryName) {
+                $query->where('name', $countryName);
+            });
         }
-        return $this->NotFoundResponse();
+
+        // Execute the query and get the results
+        $brands = $query->get();
+
+        // Return the results as a resource collection
+        return BrandResource::collection($brands);
     }
 
     public function show($id)
