@@ -2,7 +2,7 @@
 @section('title', 'Contact Us Page')
 @section('content')
     <div class="page-wrapper">
-        @include('web.Pages.header')
+        @include('web.pages.header')
         <section class="page-header">
             <div class="page-header__bg" style="background-image: url(assets/images/backgrounds/page-header-bg-1-1.jpg);">
             </div>
@@ -105,7 +105,7 @@
                 </div>
             </div><!-- /.container -->
         </section><!-- /.contact-infos -->
-        @include('web.Pages.footer')
+        @include('web.pages.footer')
     </div><!-- /.page-wrapper -->
-    @include('web.Pages.mob_header')
+    @include('web.pages.mob_header')
 @endsection
