@@ -54,18 +54,7 @@ class BrandResource extends Resource
                             ->required()
                             ->string(),
 
-                        // TextInput::make('founder')
-                        //     // ->required()
-                        //     ->string(),
-
-                        // TextInput::make('owner')
-                        //     // ->required()
-                        //     ->string(),
-
-                        // DatePicker::make('year')
-                        //     // ->required()
-                        //     ->format('d-m-Y')
-                        //     ->date(),
+                        
 
                         TextInput::make('url')
                             ->required()
@@ -75,69 +64,31 @@ class BrandResource extends Resource
                             ->required()
                             ->string(),
 
-                        // TextInput::make('parent_company')
-                        //     // ->required()
-                        //     ->string(),
-
-                        // TextInput::make('industry')
-                        //     // ->required()
-                        //     ->string(),
-
-                        // TextInput::make('notes')
-                        //     // ->required()
-                        //     ->string(),
-
-                        // Toggle::make('is_alternative')
-                        //     ->required()
-                        //     ->live(),
-
-                        // TextInput::make('barcode')
-                        //     // ->required()
-                        //     ->string(),
+                        
 
                         Select::make('status')
                             ->required()
                             ->options(StatusType::class),
 
-                        // SpatieMediaLibraryFileUpload::make('brand_logo')
-                        //     ->collection('brand')
-                        //     ->image()
-                        //     ->acceptedFileTypes(['image/png', 'image/jpeg'])
-                        //     ->maxSize(1024)
-                        //     ->columnSpanFull(),
+                        
 
                         FileUpload::make('image')->directory('brand_image'),
 
                         Select::make('user_id')
                             ->relationship('user', 'name'),
-                        // ->required(),
 
                         Select::make('country_id')
                             ->relationship('country', 'name')
-                            // ->required()
                             ->preload()
                             ->live(),
 
-                        // Select::make('city_id')
-                        //     ->options(fn(Get $get): Collection => City::query()
-                        //         ->where('country_id', $get('country_id'))
-                        //         ->pluck('name', 'id'))
-                        //     ->label('City')
-                        //     // ->required()
-                        //     ->preload()
-                        //     ->live(),
+                        
 
                         Select::make('category_id')
                             ->relationship('category', 'name'),
-                        // ->required(),
 
 
-                        // Group::make([
-                        //     Select::make('brandAlternatives')
-                        //         ->relationship('brandAlternatives', 'name')
-                        //         ->multiple()
-                        //         ->preload(),
-                        // ])->hidden(fn(Get $get): bool => $get('is_alternative')),
+                        
 
                         Select::make('brandAlternatives')
                                 ->relationship('brandAlternatives', 'name')
@@ -154,38 +105,14 @@ class BrandResource extends Resource
         return $table
             ->columns([
 
-                // TextColumn::make('No')->state(
-                //     static function (HasTable $livewire, stdClass $rowLoop): string {
-                //         return (string) (
-                //             $rowLoop->iteration +
-                //             ($livewire->getTableRecordsPerPage() * (
-                //                 $livewire->getTablePage() - 1
-                //             ))
-                //         );
-                //     }
-                // ),
-
+                
                 TextColumn::make('name')
                     ->searchable()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: false),
 
 
-                // TextColumn::make('founder')
-                //     ->searchable()
-                //     ->sortable()
-                //     ->toggleable(isToggledHiddenByDefault: false),
-
-                // TextColumn::make('owner')
-                //     ->searchable()
-                //     ->sortable()
-                //     ->toggleable(isToggledHiddenByDefault: false),
-
-                // TextColumn::make('year')
-                //     ->searchable()
-                //     ->date('d-m-Y')
-                //     ->sortable()
-                //     ->toggleable(isToggledHiddenByDefault: false),
+                
 
                 TextColumn::make('url')
                     ->searchable()
@@ -197,29 +124,7 @@ class BrandResource extends Resource
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: false),
 
-                // TextColumn::make('parent_company')
-                //     ->searchable()
-                //     ->sortable()
-                //     ->toggleable(isToggledHiddenByDefault: false),
-
-                // TextColumn::make('industry')
-                //     ->searchable()
-                //     ->sortable()
-                //     ->toggleable(isToggledHiddenByDefault: false),
-
-                // TextColumn::make('notes')
-                //     ->searchable()
-                //     ->sortable()
-                //     ->toggleable(isToggledHiddenByDefault: false),
-
-                // IconColumn::make('is_alternative')
-                //     ->boolean()
-                //     ->toggleable(isToggledHiddenByDefault: false),
-
-                // TextColumn::make('barcode')
-                //     ->searchable()
-                //     ->sortable()
-                //     ->toggleable(isToggledHiddenByDefault: false),
+                
 
                 TextColumn::make('status'),
 
@@ -236,11 +141,7 @@ class BrandResource extends Resource
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: false),
 
-                // TextColumn::make('city.name')
-                //     ->searchable()
-                //     ->sortable()
-                //     ->toggleable(isToggledHiddenByDefault: false),
-
+                
                 TextColumn::make('category.name')
                     ->searchable()
                     ->sortable()
