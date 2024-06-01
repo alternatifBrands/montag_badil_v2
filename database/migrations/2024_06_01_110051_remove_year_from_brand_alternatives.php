@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('brand_alternatives', function (Blueprint $table) {
-            //
+            Schema::dropColumn('year');
         });
     }
 
@@ -22,7 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('brand_alternatives', function (Blueprint $table) {
-            Schema::dropColumn('year');
+            
         });
     }
 };
