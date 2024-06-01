@@ -59,10 +59,7 @@ class BrandResource extends Resource
                         TextInput::make('owner')
                             // ->required()
                             ->string(),
-                        DatePicker::make('year')
-                            // ->required()
-                            ->format('d-m-Y')
-                            ->date(),
+                        
                         TextInput::make('parent_company')
                             // ->required()
                             ->string(),
@@ -143,11 +140,6 @@ class BrandResource extends Resource
 
                 TextColumn::make('owner')
                     ->searchable()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: false),
-                TextColumn::make('year')
-                    ->searchable()
-                    ->date('d-m-Y')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: false),
                 TextColumn::make('url')

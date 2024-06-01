@@ -15,7 +15,6 @@ class createRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string'],
-            'year' => ['required', 'date'],
             'description' => ['required', 'string'],
             'notes' => ['required', 'string'],
             'barcode' => ['sometimes', 'string'],

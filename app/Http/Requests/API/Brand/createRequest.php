@@ -15,7 +15,6 @@ class createRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string'],
-            'year' => ['required', 'date'],
             'description' => ['required', 'string'],
             'notes' => ['required', 'string'],
             'is_alternative' => ['required', 'boolean'],
@@ -27,9 +26,6 @@ class createRequest extends FormRequest
             'parent_company' => ['sometimes', 'string'],
             'industry' => ['sometimes', 'string'],
             'user_id' => ['required', Rule::exists('users', 'id')],
-            // 'country_id' => ['required', Rule::exists('countries', 'id')],
-            // 'city_id' => ['required', Rule::exists('cities', 'id')],
-            // 'category_id' => ['required', Rule::exists('categories', 'id')],
         ];
     }
     protected function prepareForValidation()

@@ -17,7 +17,6 @@ class updateRequest extends FormRequest
             'name' => ['sometimes', 'string'],
             'founder' => ['sometimes', 'string'],
             'owner' => ['sometimes', 'string'],
-            'year' => ['sometimes', 'date'],
             'url' => ['sometimes', 'url'],
             'description' => ['sometimes', 'string'],
             'parent_company' => ['sometimes', 'string'],

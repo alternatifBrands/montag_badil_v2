@@ -25,7 +25,6 @@ class BrandAlternative extends Model implements HasMedia
         'name',
         'founder',
         'owner',
-        'year',
         'url',
         'description',
         'parent_company',
@@ -39,13 +38,6 @@ class BrandAlternative extends Model implements HasMedia
         'country_id',
         'city_id'
     ];
-    protected function year(): Attribute
-    {
-        return Attribute::make(
-            get: fn ($value) => Carbon::parse($value)->format('d-m-Y'),
-            set: fn ($value) => Carbon::createFromFormat('d-m-Y', $value)->format('Y-m-d')
-        );
-    }
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('brand_alternative');
