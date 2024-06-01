@@ -53,9 +53,28 @@ class BrandResource extends Resource
                         TextInput::make('name')
                             ->required()
                             ->string(),
-
-                        
-
+                        TextInput::make('founder')
+                            // ->required()
+                            ->string(),
+                        TextInput::make('owner')
+                            // ->required()
+                            ->string(),
+                        DatePicker::make('year')
+                            // ->required()
+                            ->format('d-m-Y')
+                            ->date(),
+                        TextInput::make('parent_company')
+                            // ->required()
+                            ->string(),
+                        TextInput::make('industry')
+                            // ->required()
+                            ->string(),
+                        TextInput::make('notes')
+                            // ->required()
+                            ->string(),
+                        TextInput::make('barcode')
+                            // ->required()
+                            ->string(),
                         TextInput::make('url')
                             ->required()
                             ->url(),
@@ -64,13 +83,13 @@ class BrandResource extends Resource
                             ->required()
                             ->string(),
 
-                        
+
 
                         Select::make('status')
                             ->required()
                             ->options(StatusType::class),
 
-                        
+
 
                         FileUpload::make('image')->directory('brand_image'),
 
@@ -82,18 +101,25 @@ class BrandResource extends Resource
                             ->preload()
                             ->live(),
 
-                        
+
 
                         Select::make('category_id')
                             ->relationship('category', 'name'),
+                        Select::make('city_id')
+                            ->options(fn(Get $get): Collection => City::query()
+                                ->where('country_id', $get('country_id'))
+                                ->pluck('name', 'id'))
+                            ->label('City')
+                            // ->required()
+                            ->preload()
+                            ->live(),
 
 
-                        
 
                         Select::make('brandAlternatives')
-                                ->relationship('brandAlternatives', 'name')
-                                ->multiple()
-                                ->preload(),
+                            ->relationship('brandAlternatives', 'name')
+                            ->multiple()
+                            ->preload(),
 
                     ])->columns(2)
 
@@ -105,32 +131,60 @@ class BrandResource extends Resource
         return $table
             ->columns([
 
-                
+
                 TextColumn::make('name')
                     ->searchable()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: false),
-
-
-                
-
-                TextColumn::make('url')
+                TextColumn::make('founder')
                     ->searchable()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: false),
 
+                TextColumn::make('owner')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: false),
+                TextColumn::make('year')
+                    ->searchable()
+                    ->date('d-m-Y')
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: false),
+                TextColumn::make('url')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: false),
+                TextColumn::make('parent_company')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: false),
                 TextColumn::make('description')
                     ->searchable()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: false),
 
-                
-
+                TextColumn::make('industry')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: false),
+                TextColumn::make('industry')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: false),
+                TextColumn::make('notes')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: false),
                 TextColumn::make('status'),
 
                 ImageColumn::make('image'),
-                
-
+                IconColumn::make('is_alternative')
+                    ->boolean()
+                    ->toggleable(isToggledHiddenByDefault: false),
+                TextColumn::make('barcode')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: false),
                 TextColumn::make('user.name')
                     ->searchable()
                     ->sortable()
@@ -141,7 +195,10 @@ class BrandResource extends Resource
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: false),
 
-                
+                TextColumn::make('city.name')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: false),
                 TextColumn::make('category.name')
                     ->searchable()
                     ->sortable()
