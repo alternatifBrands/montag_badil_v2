@@ -8,6 +8,8 @@ use App\Models\Brand;
 use App\Models\Country;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Location;
+use App\Models\Modelable;
 use Illuminate\Support\Carbon;
 use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Database\Eloquent\Model;
@@ -65,5 +67,9 @@ class BrandAlternative extends Model implements HasMedia
     public function brands(): BelongsToMany
     {
         return $this->belongsToMany(Brand::class,'brands_alternatives', 'alternative_id','brand_id');
+    }
+    public function locations()
+    {
+        return $this->morphToMany(Country::class, 'modelable','locations','modelable_id')->withPivot('country_id');
     }
 }

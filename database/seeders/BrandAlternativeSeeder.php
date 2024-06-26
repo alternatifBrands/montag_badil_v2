@@ -6,8 +6,10 @@ use App\Models\City;
 use App\Models\User;
 use App\Models\Country;
 use App\Models\Category;
+use App\Models\Modelable;
 use Illuminate\Database\Seeder;
 use App\Models\BrandAlternative;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class BrandAlternativeSeeder extends Seeder
@@ -19,7 +21,7 @@ class BrandAlternativeSeeder extends Seeder
         $countryIds = Country::pluck('id')->toArray();
         $cityIds = City::pluck('id')->toArray();
         for ($i = 0; $i < 7; $i++) {
-            BrandAlternative::create([
+            $alt = BrandAlternative::create([
                 'name' => fake()->name(),
                 'founder' => fake()->name(),
                 'owner' => fake()->name(),
@@ -35,6 +37,22 @@ class BrandAlternativeSeeder extends Seeder
                 'city_id'=>fake()->randomElement($cityIds),
                 'category_id' => fake()->randomElement($categoryIds),
             ]);
+
+            DB::table('locations')->insert([
+                'country_id' => fake()->randomElement($countryIds),
+                'modelable_id' => $alt->id,
+                'modelable_type' => BrandAlternative::class,
+            ]);
+
+            // Modelable::create([
+            //     'country_id' => [65,225][rand(0,1)],
+            //     'modelable_id' => $alt->id,
+            //     'modelable_type' => BrandAlternative::class,
+            // ]);
+
+            // $alt->locations()->attach([
+            //     ['country_id' => fake()->randomElement($countryIds)],
+            // ]);
         }
     }
 }

@@ -14,6 +14,8 @@ class DatabaseSeeder extends Seeder
             StateSeeder::class,
             CitySeeder::class,
             UserSeeder::class,
+            BrandSeeder::class,
+            BrandAlternativeSeeder::class,
         ]);
     }
 }

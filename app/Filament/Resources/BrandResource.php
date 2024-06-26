@@ -33,6 +33,7 @@ use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
 use App\Filament\Resources\BrandResource\RelationManagers;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use AlperenErsoy\FilamentExport\Actions\FilamentExportHeaderAction;
 
 
 class BrandResource extends Resource
@@ -226,6 +227,7 @@ class BrandResource extends Resource
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
+                
             ])
             ->bulkActions([
                 ExportBulkAction::make(),

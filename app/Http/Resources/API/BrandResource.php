@@ -25,6 +25,7 @@ class BrandResource extends JsonResource
             'isAlternative'=>$this->is_alternative,
             'brand_barcode'=>$this->barcode,
             'status'=>$this->status,
+            'locations'=>CountryResource::collection($this->whenLoaded('locations')),
             "brand_logo" => Storage::disk('public')->url($this->image),
             'user'=>UserResource::make($this->whenLoaded('user')),
             'brand_origin_country'=>CountryResource::make($this->whenLoaded('country')),

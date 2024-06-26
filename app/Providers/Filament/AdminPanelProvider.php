@@ -33,6 +33,7 @@ class AdminPanelProvider extends PanelProvider
             ->favicon(asset('logo.png'))
             ->id('admin')
             ->passwordReset()
+            // ->registration()
             ->sidebarCollapsibleOnDesktop(true)
             ->path('admin')
             ->login()

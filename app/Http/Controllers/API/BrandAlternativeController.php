@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Trait\AHM_Response;
+use Illuminate\Http\Request;
 use App\Models\BrandAlternative;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\API\BrandAlternativeResource;
@@ -13,30 +14,75 @@ use App\Http\Requests\API\BrandAlternative\updateRequest;
 class BrandAlternativeController extends Controller
 {
     use AHM_Response;
-    public function index()
+    public function index(Request $request)
     {
-        if (BrandAlternative::exists()) {
-            $brands = BrandAlternative::where('status','approved')->with(['user', 'category', 'country','city'])->get();
-            // return $this->paginateResponse(BrandAlternativeResource::collection($brands));
-            return BrandAlternativeResource::collection($brands);
+        $countryName = $request->query('country');
+        $countryId = $request->query('location_id');
+        $query = BrandAlternative::where('status', 'approved')->whereHas('locations', function ($query) use ($countryId) {
+            if ($countryId) {
+                $query->where('country_id', $countryId);
+            }
+        })->with([
+            'user',
+            'locations',
+            'category',
+            'country',
+            'city'
+        ]);
+        if ($countryName) {
+            $query->whereHas('country', function ($query) use ($countryName) {
+                $query->where('name', $countryName);
+            });
         }
-        return $this->NotFoundResponse();
+        $brands = $query->get();
+        return BrandAlternativeResource::collection($brands);
     }
-    public function show($id)
+    public function show(Request $request,$id)
     {
-        $brand = BrandAlternative::where('status','approved')->with(['user', 'category', 'country','city'])->find($id);
+        $countryName = $request->query('country');
+        $countryId = $request->query('location_id');
+        $query = BrandAlternative::where('status', 'approved')->whereHas('locations', function ($query) use ($countryId) {
+            if ($countryId) {
+                $query->where('country_id', $countryId);
+            }
+        })->with([
+            'user',
+            'locations',
+            'category',
+            'country',
+            'city'
+        ]);
+        if ($countryName) {
+            $query->whereHas('country', function ($query) use ($countryName) {
+                $query->where('name', $countryName);
+            });
+        }
+        $brand = $query->find($id);
         if ($brand) {
             return $this->GetDataResponse(BrandAlternativeResource::make($brand));
         }
         return $this->NotFoundResponse();
     }
-    public function search($keyword)
+    public function search(Request $request,$keyword)
     {
+        $locationId = $request->query('location_id');
         if (BrandAlternative::exists()) {
-            $brands = BrandAlternative::with(['user', 'category', 'country','city'])
-                ->where('name', 'like', '%' . $keyword . '%')
-                ->orWhere('barcode', 'like', '%' . $keyword . '%')
-                ->paginate();
+            $query  = BrandAlternative::with([
+                'user',
+                'locations',
+                'category',
+                'country',
+                'city'
+            ])->where(function ($query) use ($keyword) {
+                $query->where('name', 'like', '%' . $keyword . '%')
+                    ->orWhere('barcode', 'like', '%' . $keyword . '%');
+            });
+            if ($locationId) {
+                $query->whereHas('locations', function ($query) use ($locationId) {
+                    $query->where('country_id', $locationId);
+                });
+            }
+            $brands = $query->paginate();
             return $this->paginateResponse(BrandAlternativeResource::collection($brands));
         }
         return $this->NotFoundResponse();
