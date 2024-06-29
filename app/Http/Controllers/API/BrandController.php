@@ -18,13 +18,8 @@ class BrandController extends Controller
     {
         $countryName = $request->query('country');
         $countryId = $request->query('location_id');
-        $query = Brand::where('status', 'approved')->whereHas('locations', function ($query) use ($countryId) {
-            if ($countryId) {
-                $query->where('country_id', $countryId);
-            }
-        })->with([
+        $query = Brand::where('status', 'approved')->with([
             'user',
-            'locations',
             'category',
             'country',
             'city',
