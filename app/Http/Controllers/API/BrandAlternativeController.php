@@ -18,13 +18,8 @@ class BrandAlternativeController extends Controller
     {
         $countryName = $request->query('country');
         $countryId = $request->query('location_id');
-        $query = BrandAlternative::where('status', 'approved')->whereHas('locations', function ($query) use ($countryId) {
-            if ($countryId) {
-                $query->where('country_id', $countryId);
-            }
-        })->with([
+        $query = BrandAlternative::where('status', 'approved')->with([
             'user',
-            'locations',
             'category',
             'country',
             'city'
@@ -41,13 +36,8 @@ class BrandAlternativeController extends Controller
     {
         $countryName = $request->query('country');
         $countryId = $request->query('location_id');
-        $query = BrandAlternative::where('status', 'approved')->whereHas('locations', function ($query) use ($countryId) {
-            if ($countryId) {
-                $query->where('country_id', $countryId);
-            }
-        })->with([
+        $query = BrandAlternative::where('status', 'approved')->with([
             'user',
-            'locations',
             'category',
             'country',
             'city'
@@ -69,7 +59,6 @@ class BrandAlternativeController extends Controller
         if (BrandAlternative::exists()) {
             $query  = BrandAlternative::with([
                 'user',
-                'locations',
                 'category',
                 'country',
                 'city'
