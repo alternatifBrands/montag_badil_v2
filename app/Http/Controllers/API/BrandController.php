@@ -21,6 +21,7 @@ class BrandController extends Controller
         $query = Brand::where('status', 'approved')->with([
             'user',
             'category',
+            'locations',
             'country',
             'city',
             'brandAlternatives' => function ($query) {
@@ -30,6 +31,11 @@ class BrandController extends Controller
         if ($countryName) {
             $query->whereHas('country', function ($query) use ($countryName) {
                 $query->where('name', $countryName);
+            });
+        }
+        if ($countryId) {
+            $query->whereHas('locations', function ($query) use ($countryId) {
+                $query->where('country_id', $countryId);
             });
         }
         $brands = $query->get();
@@ -44,6 +50,7 @@ class BrandController extends Controller
             'user',
             'category',
             'country',
+            'locations',
             'city',
             'brandAlternatives' => function ($query) {
                 $query->with(['country', 'category']);
@@ -52,6 +59,11 @@ class BrandController extends Controller
         if ($countryName) {
             $query->whereHas('country', function ($query) use ($countryName) {
                 $query->where('name', $countryName);
+            });
+        }
+        if ($countryId) {
+            $query->whereHas('locations', function ($query) use ($countryId) {
+                $query->where('country_id', $countryId);
             });
         }
         $brand = $query->find($id);
@@ -68,6 +80,7 @@ class BrandController extends Controller
                 'user',
                 'category',
                 'country',
+                'locations',
                 'city',
                 'brandAlternatives' => function ($query) {
                     $query->with(['country', 'category']);

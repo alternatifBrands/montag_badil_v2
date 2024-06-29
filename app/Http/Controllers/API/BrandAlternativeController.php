@@ -22,11 +22,17 @@ class BrandAlternativeController extends Controller
             'user',
             'category',
             'country',
+            'locations',
             'city'
         ]);
         if ($countryName) {
             $query->whereHas('country', function ($query) use ($countryName) {
                 $query->where('name', $countryName);
+            });
+        }
+        if ($countryId) {
+            $query->whereHas('locations', function ($query) use ($countryId) {
+                $query->where('country_id', $countryId);
             });
         }
         $brands = $query->get();
@@ -40,11 +46,17 @@ class BrandAlternativeController extends Controller
             'user',
             'category',
             'country',
+            'locations',
             'city'
         ]);
         if ($countryName) {
             $query->whereHas('country', function ($query) use ($countryName) {
                 $query->where('name', $countryName);
+            });
+        }
+        if ($countryId) {
+            $query->whereHas('locations', function ($query) use ($countryId) {
+                $query->where('country_id', $countryId);
             });
         }
         $brand = $query->find($id);
@@ -61,6 +73,7 @@ class BrandAlternativeController extends Controller
                 'user',
                 'category',
                 'country',
+                'locations',
                 'city'
             ])->where(function ($query) use ($keyword) {
                 $query->where('name', 'like', '%' . $keyword . '%')
