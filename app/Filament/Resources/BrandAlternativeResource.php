@@ -62,7 +62,7 @@ class BrandAlternativeResource extends Resource
                         //     ->date(),
 
                         TextInput::make('url')
-                            ->required()
+                            // ->required()
                             ->url(),
 
                         // Textarea::make('description')

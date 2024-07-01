@@ -74,7 +74,7 @@ class BrandResource extends Resource
                             // ->required()
                             ->string(),
                         TextInput::make('url')
-                            ->required()
+                            // ->required()
                             ->url(),
 
                         Textarea::make('description')
