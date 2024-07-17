@@ -130,6 +130,8 @@ class BrandResource extends Resource
             ->columns([
 
 
+                TextColumn::make('id')->searchable()
+                ->sortable(),
                 TextColumn::make('name')
                     ->searchable()
                     ->sortable()

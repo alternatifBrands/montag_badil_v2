@@ -144,6 +144,8 @@ class BrandAlternativeResource extends Resource
                 //     }
                 // ),
 
+                TextColumn::make('id')->searchable()
+                ->sortable(),
                 TextColumn::make('name')
                     ->searchable()
                     ->sortable()
