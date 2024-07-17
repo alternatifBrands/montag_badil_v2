@@ -30,10 +30,8 @@ class BrandAlternativeController extends Controller
                 $query->where('name', $countryName);
             });
         }
-        if ($countryId) {
-            $query->whereHas('locations', function ($query) use ($countryId) {
-                $query->where('country_id', $countryId);
-            });
+        if ($countryId) { 
+            $query->where('country_id', $countryId); 
         }
         $brands = $query->get();
         return BrandAlternativeResource::collection($brands);
