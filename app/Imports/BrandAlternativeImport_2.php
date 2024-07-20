@@ -7,6 +7,7 @@ use App\Models\BrandAlternative;
 use App\Models\BrandMapAlternative;
 use App\Models\Category;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\ToCollection;
 
 class BrandAlternativeImport_2 implements ToCollection
@@ -20,18 +21,18 @@ class BrandAlternativeImport_2 implements ToCollection
     {
         foreach($rows as $key => $row){
             if($key != 0){ 
-                $name = $row[0];
-                $category_name = $row[4];
+                $name = preg_replace("/[^\w\s]+/", "", $row[0]);
+                $category_name = preg_replace("/[^\w\s]+/", "", $row[4]);
                 $is_alternative = $row[5];
-                $brand_name = $row[6];
+                $brand_name = preg_replace("/[^\w\s]+/", "", $row[6]);
 
-                $brand = Brand::where('name','like','%'.$brand_name.'%')->first(); 
+                $brand = Brand::where(DB::raw('UPPER(name)'),strtoupper($brand_name))->first(); 
                 
-                $brand_id = $brand->id ?? 100;
+                $brand_id = $brand->id ?? 632;
                 if($is_alternative){
-                    $category = Category::where('name','like','%'.$category_name.'%')->first();
+                    $category = Category::where(DB::raw('UPPER(name)'),strtoupper($category_name))->first();
 
-                    $brandAlt = BrandAlternative::where('name','like','%'.$name.'%')->first();
+                    $brandAlt = BrandAlternative::where(DB::raw('UPPER(name)'),strtoupper($name))->first();
                     if(!$brandAlt){ 
                         $brandAlt = BrandAlternative::create([
                             'name' => $name,
