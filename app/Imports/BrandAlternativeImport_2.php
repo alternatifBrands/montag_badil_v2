@@ -36,7 +36,7 @@ class BrandAlternativeImport_2 implements ToCollection
                         $brandAlt = BrandAlternative::create([
                             'name' => $name,
                             'status' => 'approved',
-                            'image' => 'brand_alternative_image/' . $row[0] . '.jpg',
+                            'image' => 'brand_alternative_image/' . str_replace(' ','_',$row[0]) . '.jpg',
                             'category_id' => $category->id ?? 16,
                             'country_id' => 65,
                             'user_id' => 1
