@@ -53,9 +53,7 @@ class BrandAlternativeController extends Controller
             });
         }
         if ($countryId) {
-            $query->whereHas('locations', function ($query) use ($countryId) {
-                $query->where('country_id', $countryId);
-            });
+            $query->where('country_id', $countryId); 
         }
         $brand = $query->find($id);
         if ($brand) {
@@ -78,9 +76,7 @@ class BrandAlternativeController extends Controller
                     ->orWhere('barcode', 'like', '%' . $keyword . '%');
             });
             if ($locationId) {
-                $query->whereHas('locations', function ($query) use ($locationId) {
-                    $query->where('country_id', $locationId);
-                });
+                $query->where('country_id', $locationId); 
             }
             $brands = $query->paginate();
             return $this->paginateResponse(BrandAlternativeResource::collection($brands));
