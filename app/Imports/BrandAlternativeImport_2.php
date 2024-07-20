@@ -31,19 +31,26 @@ class BrandAlternativeImport_2 implements ToCollection
                 if($is_alternative){
                     $category = Category::where('name','like','%'.$category_name.'%')->first();
 
-                    $brandAlt = BrandAlternative::create([
-                        'name' => $name,
-                        'status' => 'approved',
-                        'image' => 'brand_alternative_image/' . $row[0] . '.jpg',
-                        'category_id' => $category->id ?? 16,
-                        'country_id' => 65,
-                        'user_id' => 1
-                    ]);  
-
-                    BrandMapAlternative::create([
-                        'brand_id' => $brand_id,
-                        'alternative_id' => $brandAlt->id
-                    ]); 
+                    $brandAlt = BrandAlternative::where('name','like','%'.$name.'%')->first();
+                    if(!$brandAlt){ 
+                        $brandAlt = BrandAlternative::create([
+                            'name' => $name,
+                            'status' => 'approved',
+                            'image' => 'brand_alternative_image/' . $row[0] . '.jpg',
+                            'category_id' => $category->id ?? 16,
+                            'country_id' => 65,
+                            'user_id' => 1
+                        ]);  
+                    }
+                        
+                    $brandmap = BrandMapAlternative::where('brand_id',$brand_id)->where('alternative_id',$brandAlt->id)->first();
+                    
+                    if(!$brandmap){
+                        BrandMapAlternative::create([
+                            'brand_id' => $brand_id,
+                            'alternative_id' => $brandAlt->id
+                        ]);
+                    } 
                 } 
             }
         } 

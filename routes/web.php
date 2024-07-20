@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
 Route::post('import_via_scrapping',function(Request $request){
-    Excel::import(new BrandAlternativeImport_2, $request->file);
+    Excel::import(new BrandAlternativeImport_2, $request->file('file'));
     return 'success imported ^__^';
 })->name('import_via_scrapping');
 Route::get('import_via_scrapping',function(){
