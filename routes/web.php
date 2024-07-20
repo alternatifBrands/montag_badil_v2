@@ -2,8 +2,18 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\web\AuthController;
-use App\Http\Controllers\web\HomeController;
+use App\Http\Controllers\web\HomeController; 
+use App\Imports\BrandAlternativeImport_2;
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
+Route::post('import_via_scrapping',function(Request $request){
+    Excel::import(new BrandAlternativeImport_2, $request->file);
+    return 'success imported ^__^';
+})->name('import_via_scrapping');
+Route::get('import_via_scrapping',function(){
+    return view('import_via_scrapping');
+});
 
 Route::get('/login',[AuthController::class,'loginView'])->name('login');
 Route::post('/login', [AuthController::class,'loginMethod'])->name('login.post');
