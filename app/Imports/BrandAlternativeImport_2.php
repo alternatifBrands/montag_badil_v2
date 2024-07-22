@@ -24,11 +24,9 @@ class BrandAlternativeImport_2 implements ToCollection
                 $name = preg_replace("/[^\w\s]+/", "", $row[0]);
                 $category_name = preg_replace("/[^\w\s]+/", "", $row[4]);
                 $is_alternative = $row[5];
-                $brand_name = preg_replace("/[^\w\s]+/", "", $row[6]);
+                $brand_id = $row[6];
 
-                $brand = Brand::where(DB::raw('UPPER(name)'),strtoupper($brand_name))->first(); 
-                
-                $brand_id = $brand->id ?? 632;
+                $brand_id = Brand::find($brand_id)->id ?? 632;  
                 if($is_alternative){
                     $category = Category::where(DB::raw('UPPER(name)'),strtoupper($category_name))->first();
 
