@@ -7,6 +7,7 @@ use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\BrandAlternativeController;
 use App\Http\Controllers\API\BrandMapBrandAltController;
+use App\Http\Controllers\API\CountryController;
 use App\Http\Controllers\API\ProductAlternativeController;
 use App\Http\Controllers\API\ProductMapProductAltController;
 
@@ -37,6 +38,9 @@ Route::get('products/search/{keyword}',[ProductController::class,'search']);
 Route::get('productsAlternative',[ProductAlternativeController::class,'index']);
 Route::get('productsAlternative/{id}',[ProductAlternativeController::class,'show']);
 Route::get('productsAlternative/search/{keyword}',[ProductAlternativeController::class,'search']);
+
+
+Route::get('countries',[CountryController::class,'index']);
 
 
 Route::middleware('auth:api')->group(function(){
