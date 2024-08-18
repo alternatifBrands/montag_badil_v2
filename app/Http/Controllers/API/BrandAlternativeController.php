@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Exports\BrandAlternativeExport;
 use App\Trait\AHM_Response;
 use Illuminate\Http\Request;
 use App\Models\BrandAlternative;
@@ -9,11 +10,33 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\API\BrandAlternativeResource;
 use App\Http\Requests\API\BrandAlternative\createRequest;
 use App\Http\Requests\API\BrandAlternative\updateRequest;
-
+use App\Imports\BrandAlternativeImport_3;
+use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class BrandAlternativeController extends Controller
 {
     use AHM_Response;
+    
+    public function export_example(){
+        return $this->GetDataResponse(['file_link' => asset('brand_alternative.xlsx')]);
+    }
+    public function export(Request $request){
+        $request->validate([
+            'ids' => 'required|array',
+            'ids.*' => 'exists:brand_alternatives,id'
+        ]) ;
+        return (new BrandAlternativeExport)->forIds($request->ids)->download('alternative.xlsx');
+    }
+
+    public function import(Request $request){
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls'
+        ]);
+        Excel::import(new BrandAlternativeImport_3, $request->file('file'));
+        return $this->okResponse('Succes Imported',null);
+    }
+
     public function index(Request $request)
     {
         $countryName = $request->query('country');

@@ -10,6 +10,7 @@ use App\Http\Controllers\API\BrandMapBrandAltController;
 use App\Http\Controllers\API\CountryController;
 use App\Http\Controllers\API\ProductAlternativeController;
 use App\Http\Controllers\API\ProductMapProductAltController;
+use App\Models\BrandAlternative;
 
 // part 1
 Route::post('registerAPI',[AuthController::class,'register']);
@@ -64,4 +65,8 @@ Route::middleware('auth:api')->group(function(){
     Route::post('productsAlternative',[ProductAlternativeController::class,'store']);
     Route::post('productsAlternative/{id}',[ProductAlternativeController::class,'update']);
     Route::post('products_sync_productsAlternative',[ProductMapProductAltController::class,'store']);
+
+    Route::get('export_example',[BrandAlternativeController::class,'export_example']);
+    Route::post('export',[BrandAlternativeController::class,'export']);
+    Route::post('import',[BrandAlternativeController::class,'import']);
 });
