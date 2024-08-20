@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'user_created' => 'User created',
+    'user_login' => 'User logged in',
+    'invalid_credentials' => 'Invalid email or password',
+    'password_not_valid' => 'Password not valid',
+    'logged_out' => 'Logged out',
+    'password_reset' => 'Password reset successfully',
+    'password_changed' => 'Password changed successfully',
+    'otp_sent' => 'OTP sent successfully',
+    'otp_resend' => 'Resent OTP successfully',
+    'otp_valid' => 'OTP valid',
+    'otp_not_valid' => 'OTP not valid',
+    'profile_get' => 'Profile retrieved successfully',
+    'profile_updated' => 'Profile updated',
+    'account_deleted' => 'Account deleted successfully',
+    'invalid_password' => 'Invalid password',
+    'socialite_login' => 'Successfully logged in with :type',
+    'record_created' => 'Record created',
+    'data_fetched' => 'Data fetched successfully',
+    'not_found' => 'Not found',
+    'record_updated' => 'Record updated successfully',
+    'record_deleted' => 'Record deleted successfully',
+];

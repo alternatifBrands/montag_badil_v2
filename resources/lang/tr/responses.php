@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'user_created' => 'Kullanıcı oluşturuldu',
+    'user_login' => 'Başarıyla giriş yapıldı',
+    'invalid_credentials' => 'Geçersiz e-posta veya şifre',
+    'password_not_valid' => 'Şifre geçerli değil',
+    'logged_out' => 'Çıkış yapıldı',
+    'password_reset' => 'Şifre başarıyla sıfırlandı',
+    'password_changed' => 'Şifre başarıyla değiştirildi',
+    'otp_sent' => 'OTP başarıyla gönderildi',
+    'otp_resend' => 'OTP başarıyla tekrar gönderildi',
+    'otp_valid' => 'OTP geçerli',
+    'otp_not_valid' => 'OTP geçersiz',
+    'profile_get' => 'Profil başarıyla alındı',
+    'profile_updated' => 'Profil başarıyla güncellendi',
+    'account_deleted' => 'Hesap başarıyla silindi',
+    'invalid_password' => 'Geçersiz şifre',
+    'socialite_login' => ':type ile başarıyla giriş yapıldı',
+    'record_created' => 'Kayıt oluşturuldu',
+    'data_fetched' => 'Veri başarıyla alındı',
+    'not_found' => 'Bulunamadı',
+    'record_updated' => 'Kayıt başarıyla güncellendi',
+    'record_deleted' => 'Kayıt başarıyla silindi',
+];
