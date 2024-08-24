@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\SettingsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\BrandController;
@@ -49,7 +50,7 @@ Route::middleware('auth:api')->group(function(){
     Route::post('logoutAPI',[AuthController::class,'logout']);
     Route::post('changePassword',[AuthController::class,'changePassword']);
     Route::get('profile',[AuthController::class,'profile']);
-    Route::put('updateProfile',[AuthController::class,'updateProfile']);
+    Route::post('updateProfile',[AuthController::class,'updateProfile']);
     Route::delete('deleteProfile',[AuthController::class,'deleteProfile']);
     // part 3
     Route::post('brands',[BrandController::class,'store']);
@@ -69,4 +70,7 @@ Route::middleware('auth:api')->group(function(){
     Route::get('export_example',[BrandAlternativeController::class,'export_example']);
     Route::post('export',[BrandAlternativeController::class,'export']);
     Route::post('import',[BrandAlternativeController::class,'import']);
+
+
+    Route::get('settings', [SettingsController::class, 'index']);
 });

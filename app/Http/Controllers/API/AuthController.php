@@ -7,6 +7,7 @@ use Ichtrojan\Otp\Otp;
 use App\Trait\AHM_Response;
 use App\Mail\API\ResendOTPMail;
 use Illuminate\Support\Facades\DB;
+use Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
 use App\Mail\API\ForgetPasswordMail;
@@ -32,7 +33,7 @@ class AuthController extends Controller
         // create user
         $user = User::create($data); 
         $user->update([
-            'type'=>'individual'
+            'type'=>$request->type
         ]);
         $user_role = Role::where('name', 'user_role_api')->first();
         if ($user_role) {

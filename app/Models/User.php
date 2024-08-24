@@ -34,6 +34,7 @@ class User extends Authenticatable implements HasMedia,FilamentUser
     protected $fillable = [
         'name',
         'email',
+        'phone',
         'password',
         'email_verified_at',
         'remember_token',

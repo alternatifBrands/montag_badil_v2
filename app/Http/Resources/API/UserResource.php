@@ -15,6 +15,7 @@ class UserResource extends JsonResource
             'id'=>$this->id,
             'name'=>$this->name,
             'email'=>$this->email,
+            'phone'=>$this->phone,
             'image' => $this->getFirstMediaUrl('profile')?:$defaultImage,
             'type'=>$this->type,
             'country'=>CountryResource::make($this->whenLoaded('country'))
