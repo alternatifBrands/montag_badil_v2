@@ -31,6 +31,11 @@ class BrandAlternativeResource extends JsonResource
             'brand_origin_country'=>CountryResource::make($this->whenLoaded('country')),
             'city'=>CityResource::make($this->whenLoaded('city')),
             'category'=>CategoryResource::make($this->whenLoaded('category')),
+            'meta_title' => $this->meta_title ,
+            'meta_description' => $this->meta_description ,
+            'keywords' => $this->keywords ? explode(',',$this->keywords) : '' ,
+            'canonicalUrl' => $this->canonicalUrl ,
+            'slug' => $this->slug ,
         ];
     }
     protected function formatBirthDate($birth)

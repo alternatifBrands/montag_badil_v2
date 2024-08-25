@@ -56,7 +56,7 @@ class BrandAlternativeController extends Controller
         if ($countryId) { 
             $query->where('country_id', $countryId); 
         }
-        $brands = $query->get();
+        $brands = $query->paginate();
         return BrandAlternativeResource::collection($brands);
     }
     public function show(Request $request,$id)

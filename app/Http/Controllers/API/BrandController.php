@@ -38,7 +38,7 @@ class BrandController extends Controller
                 $query->where('country_id', $countryId);
             });
         }
-        $brands = $query->get();
+        $brands = $query->paginate();
         return BrandResource::collection($brands);
     }
 

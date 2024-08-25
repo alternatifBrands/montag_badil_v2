@@ -21,7 +21,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Brand extends Model implements HasMedia
 {
-    use HasFactory,InteractsWithMedia;
+    use HasFactory,InteractsWithMedia; 
+
     protected $fillable = [
         'name',
         'founder',
@@ -35,6 +36,11 @@ class Brand extends Model implements HasMedia
         'is_alternative',
         'barcode',
         'status',
+        'meta_title',
+        'meta_description',
+        'keywords',
+        'canonicalUrl',
+        'slug',
         'category_id',
         'user_id',
         'country_id',

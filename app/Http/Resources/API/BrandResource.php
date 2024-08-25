@@ -32,6 +32,11 @@ class BrandResource extends JsonResource
             'city'=>CityResource::make($this->whenLoaded('city')),
             'category'=>CategoryResource::make($this->whenLoaded('category')),
             'brandAlternatives'=>BrandAlternativeResource::collection($this->whenLoaded('brandAlternatives')),
+            'meta_title' => $this->meta_title ,
+            'meta_description' => $this->meta_description ,
+            'keywords' => $this->keywords ? explode(',',$this->keywords) : '' ,
+            'canonicalUrl' => $this->canonicalUrl ,
+            'slug' => $this->slug ,
         ];
     }
 }

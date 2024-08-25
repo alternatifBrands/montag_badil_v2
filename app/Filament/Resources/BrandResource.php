@@ -34,7 +34,9 @@ use App\Filament\Resources\BrandResource\RelationManagers;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use AlperenErsoy\FilamentExport\Actions\FilamentExportHeaderAction;
-
+use Filament\Forms\Components\TagsInput;
+use Filament\Forms\Set;
+use Illuminate\Support\Str;
 
 class BrandResource extends Resource
 {
@@ -53,7 +55,9 @@ class BrandResource extends Resource
                     ->schema([
                         TextInput::make('name')
                             ->required()
-                            ->string(),
+                            ->string()
+                            ->live(onBlur: true)
+                            ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state))),
                         TextInput::make('founder')
                             // ->required()
                             ->string(),
@@ -118,6 +122,15 @@ class BrandResource extends Resource
                             ->relationship('brandAlternatives', 'name')
                             ->multiple()
                             ->preload(),
+                        TextInput::make('slug')->unique(),
+                        TextInput::make('meta_title') 
+                            ->string(),
+                        Textarea::make('meta_description') 
+                            ->string(),
+                        TagsInput::make('keywords')
+                            ->separator(','),
+                        TextInput::make('canonicalUrl') 
+                            ->string(),
 
                     ])->columns(2)
 

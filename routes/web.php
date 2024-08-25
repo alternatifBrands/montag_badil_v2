@@ -4,8 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\web\AuthController;
 use App\Http\Controllers\web\HomeController; 
 use App\Imports\BrandAlternativeImport_2;
+use App\Models\Brand;
+use App\Models\BrandAlternative;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Str;
+
 
 Route::post('import_via_scrapping',function(Request $request){
     Excel::import(new BrandAlternativeImport_2, $request->file('file'));
@@ -47,4 +51,22 @@ Route::middleware('auth')->group(function () {
     Route::get('/insertAlternativeBrand',[HomeController::class, 'insertAlternativeBrandView'])->name('Alternaivebrand.insert');
     Route::post('/store_alternative_brand',[HomeController::class, 'store_alternative_brand'])->name('Alternaivebrand.store');
 
+});
+
+Route::get("update_seo",function(){
+    foreach(Brand::get() as $brand){
+        $brand->meta_title = $brand->name;
+        $brand->meta_description = $brand->description;
+        $brand->keywords = $brand->description ? str_replace(' ',',',$brand->description) : '';
+        $brand->slug = Str::slug($brand->name) . '-' . $brand->id;
+        $brand->save();
+    }
+    foreach(BrandAlternative::get() as $brandAlt){
+        $brandAlt->meta_title = $brandAlt->name;
+        $brandAlt->meta_description = $brandAlt->description;
+        $brandAlt->keywords = $brandAlt->description ? str_replace(' ',',',$brandAlt->description) : '';
+        $brandAlt->slug = Str::slug($brandAlt->name) . '-' . $brandAlt->id;
+        $brandAlt->save();
+    }
+    return 'success';
 });

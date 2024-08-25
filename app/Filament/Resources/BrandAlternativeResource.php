@@ -29,6 +29,9 @@ use App\Filament\Resources\BrandAlternativeResource\Pages;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use App\Filament\Resources\BrandAlternativeResource\RelationManagers;
+use Filament\Forms\Components\TagsInput;
+use Filament\Forms\Set;
+use Illuminate\Support\Str;
 
 class BrandAlternativeResource extends Resource
 {
@@ -46,7 +49,9 @@ class BrandAlternativeResource extends Resource
                     ->schema([
                         TextInput::make('name')
                             ->required()
-                            ->string(),
+                            ->string()
+                            ->live(onBlur: true)
+                            ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state))),
 
                         // TextInput::make('founder')
                         //     ->required()
@@ -123,6 +128,15 @@ class BrandAlternativeResource extends Resource
                             ->relationship('brands', 'name')
                             ->multiple()
                             ->preload(),
+                        TextInput::make('slug')->unique(),
+                        TextInput::make('meta_title') 
+                            ->string(),
+                        Textarea::make('meta_description') 
+                            ->string(),
+                        TagsInput::make('keywords')
+                            ->separator(','),
+                        TextInput::make('canonicalUrl') 
+                            ->string(),
                     ])->columns(2)
 
             ]);
