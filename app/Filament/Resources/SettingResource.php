@@ -26,12 +26,17 @@ class SettingResource extends Resource
     public static function form(Form $form): Form
     {
        
-        return $form->schema([
-            TextInput::make('key')
-                ->required()
-                ->maxLength(191),
-            self::getValueComponent($form->model->key),
-        ]);
+         // Ensure that model is an object and has the property 'key'
+    $key = is_object($form->model) && property_exists($form->model, 'key') 
+    ? $form->model->key 
+    : null;
+
+return $form->schema([
+    TextInput::make('key')
+        ->required()
+        ->maxLength(191),
+    self::getValueComponent($key),
+]);
     }
 
     protected static function getValueComponent($key)

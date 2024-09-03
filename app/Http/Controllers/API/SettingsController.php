@@ -12,7 +12,8 @@ class SettingsController extends Controller
     public function index(): JsonResponse
     {
         $settings = Setting::all()->pluck('value', 'key');
-
+        $settings['social_media_links'] = json_decode($settings['social_media_links']);
+        $settings['app_links'] = json_decode($settings['app_links']);
         return response()->json($settings);
     }
 }

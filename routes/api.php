@@ -72,5 +72,5 @@ Route::middleware('auth:api')->group(function(){
     Route::post('import',[BrandAlternativeController::class,'import']);
 
 
-    Route::get('settings', [SettingsController::class, 'index']);
 });
+Route::get('settings', [SettingsController::class, 'index']);
