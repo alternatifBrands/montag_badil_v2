@@ -93,6 +93,7 @@ class AuthController extends Controller
         Mail::to($user->email)->send(new ResendOTPMail($user, $otp));
         return $this->OTPResendResponse();
     }
+    
     public function checkOTP(checkOTPRequest $request)
     {
         $data = $request->validated();

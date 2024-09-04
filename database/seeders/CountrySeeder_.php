@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class CountrySeeder extends Seeder
+class CountrySeeder_ extends Seeder
 {
     public function run(): void
     {

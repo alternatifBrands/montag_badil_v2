@@ -20,7 +20,8 @@
         "maatwebsite/excel": "^3.1",
         "pxlrbt/filament-excel": "^2.3",
         "spatie/laravel-medialibrary": "^10.0.0",
-        "spatie/laravel-permission": "^6.4"
+        "spatie/laravel-permission": "^6.4",
+        "webpatser/laravel-countries": "dev-master"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

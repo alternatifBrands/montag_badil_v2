@@ -15,7 +15,7 @@ class Country extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name'
+        'capital'
     ];
     public $timestamps = false;
     public function states() :HasMany
