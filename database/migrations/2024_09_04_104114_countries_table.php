@@ -12,7 +12,7 @@ class SetupCountriesTable extends Migration {
 	public function up()
 	{
 		// Creates the users table
-		Schema::create(\Config::get('countries.table_name'), function($table)
+		Schema::create('countries', function($table)
 		{
 		    $table->integer('id')->unsigned()->index();
 		    $table->string('capital', 255)->nullable();
@@ -44,7 +44,7 @@ class SetupCountriesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop(\Config::get('countries.table_name'));
+		Schema::drop('countries');
 	}
 
 }
