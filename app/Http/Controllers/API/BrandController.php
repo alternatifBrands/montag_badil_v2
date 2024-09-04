@@ -61,7 +61,7 @@ class BrandController extends Controller
 
         // Return the response including recently viewed products
         return response()->json([
-            'brands' => BrandResource::collection($brands),
+            'data' => BrandResource::collection($brands),
             'recently_viewed_products' => BrandResource::collection($recentlyViewedProducts),
         ]);
     }
