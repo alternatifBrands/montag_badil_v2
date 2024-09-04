@@ -16,7 +16,7 @@ class ChangeLanguage
      */
     public function handle(Request $request, Closure $next): Response
     { 
-        $language = $request->query('lang');
+        $language = $request->header('lang');
  
         if ($language && in_array($language,['ar','en','tr'])) { 
             App::setLocale($language);
