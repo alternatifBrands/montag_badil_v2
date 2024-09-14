@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\web\AuthController;
 use App\Http\Controllers\web\HomeController; 
 use App\Imports\BrandAlternativeImport_2;
+use App\Imports\BrandImport_2;
 use App\Models\Brand;
 use App\Models\BrandAlternative;
 use Illuminate\Http\Request;
@@ -17,6 +18,14 @@ Route::post('import_via_scrapping',function(Request $request){
 })->name('import_via_scrapping');
 Route::get('import_via_scrapping',function(){
     return view('import_via_scrapping');
+});
+
+Route::post('import_trans_brands',function(Request $request){
+    Excel::import(new BrandImport_2, $request->file('file'));
+    return 'success imported ^__^';
+})->name('import_trans_brands');
+Route::get('import_trans_brands',function(){
+    return view('import_trans_brands');
 });
 
 Route::get('/login',[AuthController::class,'loginView'])->name('login');
