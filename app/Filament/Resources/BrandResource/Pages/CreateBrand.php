@@ -9,6 +9,15 @@ use Filament\Resources\Pages\CreateRecord;
 
 class CreateBrand extends CreateRecord
 {
+    use CreateRecord\Concerns\Translatable;
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            Actions\LocaleSwitcher::make(),
+        ];
+    }
+
     protected static string $resource = BrandResource::class;
     protected function getRedirectUrl(): string
     {

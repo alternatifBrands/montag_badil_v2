@@ -20,6 +20,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Althinect\FilamentSpatieRolesPermissions\FilamentSpatieRolesPermissionsPlugin;
 use Jeffgreco13\FilamentBreezy\BreezyCore;
+use Filament\SpatieLaravelTranslatablePlugin;
 
 
 class AdminPanelProvider extends PanelProvider
@@ -62,7 +63,9 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->plugins([
                 FilamentSpatieRolesPermissionsPlugin::make(),
-                BreezyCore::make()->myProfile()
+                BreezyCore::make()->myProfile(),
+                SpatieLaravelTranslatablePlugin::make()
+                ->defaultLocales(['en', 'ar','tr']),
             ])
             ->authMiddleware([
                 Authenticate::class,

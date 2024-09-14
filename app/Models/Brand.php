@@ -18,10 +18,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Spatie\Translatable\HasTranslations;
 
 class Brand extends Model implements HasMedia
 {
-    use HasFactory,InteractsWithMedia; 
+    use HasFactory,InteractsWithMedia,HasTranslations; 
 
     protected $fillable = [
         'name',
@@ -46,6 +47,8 @@ class Brand extends Model implements HasMedia
         'country_id',
         'city_id'
     ];
+
+    public $translatable = ['description'];
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('brand');

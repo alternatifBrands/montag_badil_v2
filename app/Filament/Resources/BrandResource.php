@@ -37,15 +37,22 @@ use AlperenErsoy\FilamentExport\Actions\FilamentExportHeaderAction;
 use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Set;
 use Illuminate\Support\Str;
+use Filament\Resources\Concerns\Translatable;
 
 class BrandResource extends Resource
 {
+    use Translatable;
     protected static ?string $model = Brand::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
     protected static ?string $navigationLabel = 'Brand';
     protected static ?int $navigationSort = 5;
     protected static ?string $navigationGroup = 'Brand Management';
+
+    public static function getTranslatableLocales(): array
+    {
+        return ['en', 'ar','tr'];
+    }
 
     public static function form(Form $form): Form
     {
