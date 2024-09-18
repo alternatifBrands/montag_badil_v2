@@ -27,7 +27,7 @@ class SettingResource extends Resource
     {
 
         // Ensure that model is an object and has the property 'key'
-        $key = is_object($form->model) && property_exists($form->model, 'key')
+        $key = is_object($form->model)
             ? $form->model->key
             : null;
 
@@ -35,17 +35,16 @@ class SettingResource extends Resource
             TextInput::make('key')
                 ->required()
                 ->maxLength(191),
-            self::getValueComponent($key),
+            self::getValueComponent($form->model),
         ]);
     }
 
-    protected static function getValueComponent($key)
+    protected static function getValueComponent($model)
     {
-        $fileInputKeys = ['logo', 'favicon']; // Add more keys as needed
+        $fileInputKeys = ['logo', 'favicon','hero_image']; // Add more keys as needed
 
-        if ($key && in_array($key, $fileInputKeys)) {
-            return FileUpload::make('value')
-                ->required();
+        if ($model->key && in_array($model->key, $fileInputKeys)) {
+            return FileUpload::make('value')->directory('settings');
         }
 
         return TextInput::make('value')
