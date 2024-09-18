@@ -41,12 +41,14 @@ class SettingResource extends Resource
 
     protected static function getValueComponent($model)
     {
-        $fileInputKeys = ['logo', 'favicon','hero_image']; // Add more keys as needed
+        $fileInputKeys = ['logo', 'favicon', 'hero_image']; // Add more keys as needed
+        if (is_object($model)) {
 
-        if ($model->key && in_array($model->key, $fileInputKeys)) {
-            return FileUpload::make('value')->directory('settings');
+            if (in_array($model->key, $fileInputKeys)) {
+                return FileUpload::make('value')->directory('settings');
+            }
+
         }
-
         return TextInput::make('value')
             ->columnSpanFull();
     }
