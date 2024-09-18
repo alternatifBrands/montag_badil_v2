@@ -6,14 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use App\Http\Resources\API\SettingResource;
 
 class SettingsController extends Controller
 {
     public function index(): JsonResponse
     {
-        $settings = Setting::all()->pluck('value', 'key');
-        $settings['social_media_links'] = json_decode($settings['social_media_links']);
-        $settings['app_links'] = json_decode($settings['app_links']);
-        return response()->json($settings);
+        $settings = Setting::select('key','value')->get();
+        return response()->json(SettingResource::collection($settings));
     }
 }
