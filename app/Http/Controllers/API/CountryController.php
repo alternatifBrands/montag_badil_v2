@@ -13,6 +13,6 @@ class CountryController extends Controller
 
     public function index()
     {
-        return CountryResource::collection(Country::all());
+        return CountryResource::collection(Country::where('status',1)->get());
     } 
 }
