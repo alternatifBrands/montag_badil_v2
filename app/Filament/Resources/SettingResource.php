@@ -7,6 +7,7 @@ use App\Filament\Resources\SettingResource\RelationManagers;
 use App\Models\Setting;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -42,10 +43,13 @@ class SettingResource extends Resource
     protected static function getValueComponent($model)
     {
         $fileInputKeys = ['logo', 'favicon', 'hero_image']; // Add more keys as needed
+        $editornputKeys = ['terms_and_conditions'];
         if (is_object($model)) {
 
             if (in_array($model->key, $fileInputKeys)) {
                 return FileUpload::make('value')->directory('settings');
+            }else if (in_array($model->key, $editornputKeys)) {
+                return RichEditor::make('value');
             }
 
         }
