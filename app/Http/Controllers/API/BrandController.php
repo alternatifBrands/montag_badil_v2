@@ -17,7 +17,7 @@ class BrandController extends Controller
     public function index(Request $request)
     {
         // Retrieve query parameters with default values
-        $countryName = $request->query('country');
+        $countryName = $request->query('country_name');
         $countryId = $request->query('country_id');
         $perPage = (int) $request->query('per_page', 15); // Default to 15 items per page if not specified
 
