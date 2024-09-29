@@ -39,8 +39,8 @@ class BrandAlternativeController extends Controller
 
     public function index(Request $request)
     {
-        $countryName = $request->query('country');
-        $countryId = $request->query('location_id');
+        $countryName = $request->query('country_name');
+        $countryId = $request->query('country_id');
         $query = BrandAlternative::where('status', 'approved')->with([
             'user',
             'category',
@@ -48,14 +48,21 @@ class BrandAlternativeController extends Controller
             'locations',
             'city'
         ]);
+        
+        // Apply filter by country name if provided
         if ($countryName) {
             $query->whereHas('country', function ($query) use ($countryName) {
                 $query->where('name', $countryName);
             });
         }
-        if ($countryId) { 
-            $query->where('country_id', $countryId); 
+
+        // Apply filter by country ID if provided
+        if ($countryId) {
+            $query->whereHas('country', function ($query) use ($countryId) {
+                $query->where('id', $countryId);
+            });
         }
+
         $brands = $query->paginate((int) $request->query('per_page'));
         return BrandAlternativeResource::collection($brands);
     }
