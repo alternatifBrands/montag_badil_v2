@@ -18,7 +18,7 @@ class BrandController extends Controller
     {
         // Retrieve query parameters with default values
         $countryName = $request->query('country');
-        $countryId = $request->query('location_id');
+        $countryId = $request->query('country_id');
         $perPage = (int) $request->query('per_page', 15); // Default to 15 items per page if not specified
 
         // Initialize the query for brands
@@ -40,10 +40,10 @@ class BrandController extends Controller
             });
         }
 
-        // Apply filter by location ID if provided
+        // Apply filter by country ID if provided
         if ($countryId) {
-            $query->whereHas('locations', function ($query) use ($countryId) {
-                $query->where('country_id', $countryId);
+            $query->whereHas('country', function ($query) use ($countryId) {
+                $query->where('id', $countryId);
             });
         }
 
