@@ -31,6 +31,8 @@ Route::get('brands',[BrandController::class,'index']);
 Route::get('brands/{id}',[BrandController::class,'show']);
 Route::get('brands/search/{keyword}',[BrandController::class,'search']);
 
+Route::get('recentlyViewed',[BrandController::class,'recentlyViewed']);
+
 });
 // part 4
 Route::get('brandsAlternative',[BrandAlternativeController::class,'index']);

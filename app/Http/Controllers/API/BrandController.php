@@ -50,6 +50,13 @@ class BrandController extends Controller
         // Fetch the brands with pagination
         $brands = $query->paginate($perPage);
 
+
+        // Return the response including recently viewed products
+        return BrandResource::collection($brands);
+    }
+
+    public function recentlyViewed(Request $request)
+    {
         // Fetch recently viewed products from the session
         $recentlyViewedProductIds = $request->session()->get('recently_viewed', []);
         $recentlyViewedProducts = [];
@@ -59,14 +66,8 @@ class BrandController extends Controller
                 ->get();
         }
 
-        // Return the response including recently viewed products
-        return response()->json([
-            'data' => BrandResource::collection($brands),
-            'recently_viewed_products' => BrandResource::collection($recentlyViewedProducts),
-        ]);
+        return BrandResource::collection($recentlyViewedProducts);
     }
-
-
 
     public function show(Request $request, $id)
     {

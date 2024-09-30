@@ -15,6 +15,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use AmidEsfahani\FilamentTinyEditor\TinyEditor;
 
 class SettingResource extends Resource
 {
@@ -49,7 +50,14 @@ class SettingResource extends Resource
             if (in_array($model->key, $fileInputKeys)) {
                 return FileUpload::make('value')->directory('settings');
             }else if (in_array($model->key, $editornputKeys)) {
-                return RichEditor::make('value');
+                return TinyEditor::make('value')
+                ->fileAttachmentsDisk('public')
+                ->fileAttachmentsVisibility('public')
+                ->fileAttachmentsDirectory('uploads')
+                ->profile('default|simple|full|minimal|none|custom')
+                ->rtl() // Set RTL or use ->direction('auto|rtl|ltr')
+                ->columnSpan('full')
+                ->required();
             }
 
         }
