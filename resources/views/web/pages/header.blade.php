@@ -68,6 +68,11 @@
                 <li>
                     <a href="{{ route('about') }}" target="_blank">About</a>
                 </li>
+
+                <li>
+                    <a href="{{ route('terms') }}" target="_blank">terms & conditions</a>
+                </li>
+
                 <li><a href="{{ route('contact') }}" target="_blank">Contact</a></li>
             </ul>
         </div><!-- /.container -->

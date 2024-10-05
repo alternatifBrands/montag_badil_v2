@@ -1,5 +1,5 @@
 @extends('web.pages.montag_layout')
-@section('title', 'About Page')
+@section('title', 'terms & conditions')
 @section('content')
     <div class="page-wrapper">
         @include('web.pages.header')

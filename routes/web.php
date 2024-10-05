@@ -43,6 +43,10 @@ Route::post('/reset-password', [AuthController::class, 'resetPasswordMethod'])->
 
 Route::get('/',[HomeController::class, 'index'])->name('home');
 Route::get('/about',[HomeController::class, 'aboutPage'])->name('about');
+Route::get('/terms',function(){
+    return view('web.pages.termsAndCondtions');
+})->name('terms');
+
 Route::get('/contact',[HomeController::class, 'contactPage'])->name('contact');
 Route::post('sendMessage',[HomeController::class, 'sendMessage'])->name('sendMessage');
 
