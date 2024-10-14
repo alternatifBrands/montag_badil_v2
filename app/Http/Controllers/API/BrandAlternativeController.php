@@ -79,7 +79,7 @@ class BrandAlternativeController extends Controller
         ]);
         if ($countryName) {
             $query->whereHas('country', function ($query) use ($countryName) {
-                $query->where('name', $countryName);
+                $query->where('name','Like', $countryName);
             });
         }
         if ($countryId) {

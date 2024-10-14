@@ -36,7 +36,7 @@ class BrandController extends Controller
         // Apply filter by country name if provided
         if ($countryName) {
             $query->whereHas('country', function ($query) use ($countryName) {
-                $query->where('name', $countryName);
+                $query->where('name','Like', $countryName);
             });
         }
 

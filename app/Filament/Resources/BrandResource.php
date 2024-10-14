@@ -129,7 +129,7 @@ class BrandResource extends Resource
                             ->relationship('brandAlternatives', 'name')
                             ->multiple()
                             ->preload(),
-                        TextInput::make('slug')->unique(),
+                        TextInput::make('slug'),
                         TextInput::make('meta_title') 
                             ->string(),
                         Textarea::make('meta_description') 
