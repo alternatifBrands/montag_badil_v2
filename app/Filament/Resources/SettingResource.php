@@ -44,7 +44,7 @@ class SettingResource extends Resource
     protected static function getValueComponent($model)
     {
         $fileInputKeys = ['logo', 'favicon', 'hero_image']; // Add more keys as needed
-        $editornputKeys = ['terms_and_conditions','hero_title_en','hero_title_ar','hero_title_tr'];
+        $editornputKeys = ['terms_and_conditions','hero_title_en','hero_title_ar','hero_title_tr','hero_description_en','hero_description_ar','hero_description_tr'];
         if (is_object($model)) {
 
             if (in_array($model->key, $fileInputKeys)) {
