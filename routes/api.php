@@ -25,19 +25,19 @@ Route::get('categories',[CategoryController::class,'index']);
 Route::get('categories/{id}',[CategoryController::class,'show']);
 Route::get('categories/search/{keyword}',[CategoryController::class,'search']);
 Route::middleware(['web'])->group(function () {
-
-// part 3
-Route::get('brands',[BrandController::class,'index']);
-Route::get('brands/{id}',[BrandController::class,'show']);
-Route::get('brands/search/{keyword}',[BrandController::class,'search']);
-
-Route::get('recentlyViewed',[BrandController::class,'recentlyViewed']);
-
+    
+    // part 3
+    Route::get('brands',[BrandController::class,'index']);
+    Route::get('brands/{id}',[BrandController::class,'show']);
+    Route::get('brands/search/{keyword}',[BrandController::class,'search']);
+    
+    Route::get('recentlyViewed',[BrandController::class,'recentlyViewed']);
+    
 });
 // part 4
+Route::get('brandsAlternative/search',[BrandAlternativeController::class,'search']);
 Route::get('brandsAlternative',[BrandAlternativeController::class,'index']);
 Route::get('brandsAlternative/{id}',[BrandAlternativeController::class,'show']);
-Route::get('brandsAlternative/search/{keyword}',[BrandAlternativeController::class,'search']);
 // part 5
 Route::get('products',[ProductController::class,'index']);
 Route::get('products/{id}',[ProductController::class,'show']);

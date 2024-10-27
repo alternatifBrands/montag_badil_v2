@@ -91,8 +91,9 @@ class BrandAlternativeController extends Controller
         }
         return $this->NotFoundResponse();
     }
-    public function search(Request $request,$keyword)
+    public function search(Request $request)
     {
+        $keyword =  $request->keyword;
         $locationId = $request->query('location_id');
         if (BrandAlternative::exists()) {
             $query  = BrandAlternative::with([
