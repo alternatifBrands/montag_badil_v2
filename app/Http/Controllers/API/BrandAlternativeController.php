@@ -122,6 +122,9 @@ class BrandAlternativeController extends Controller
         $brand->update([
             'status'=>'pending'
         ]);
+        $brand->status = 'pending';
+        $brand->save();
+
 
         // if($request->hasFile('image')) {
         //     $brand->addMediaFromRequest('image')->toMediaCollection('brand_alternative');
